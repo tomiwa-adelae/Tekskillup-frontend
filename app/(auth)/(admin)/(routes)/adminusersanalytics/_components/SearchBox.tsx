@@ -19,6 +19,8 @@ import axios from "axios";
 import { BASE_URL, USERS_URL } from "@/app/slices/constants";
 import { Loader2, UserRoundSearch } from "lucide-react";
 
+import { useSelector } from "react-redux";
+
 const formSchema = z.object({
 	keyword: z.string(),
 });
@@ -26,6 +28,9 @@ const formSchema = z.object({
 const SearchBox = ({ successUpdate }: any) => {
 	const { toast } = useToast();
 	const [loading, setLoading] = useState<boolean>(false);
+
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -36,14 +41,14 @@ const SearchBox = ({ successUpdate }: any) => {
 
 	// 2. Define a submit handler.
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
 		try {
+			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			const res = await axios.get(
 				`${BASE_URL}${USERS_URL}?keyword=${values.keyword}`,
 				config

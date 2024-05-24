@@ -15,6 +15,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSelector } from "react-redux";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -53,22 +54,21 @@ const CourseWeekdayStartDate = ({
 	const [editStartDate, setEditStartDate] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 	});
 
 	// 2. Define a submit handler.
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
-
 		try {
-			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 
 			const res = await axios.put(
 				`${BASE_URL}${COURSES_URL}/${id}`,

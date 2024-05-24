@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { BASE_URL, COURSES_URL } from "@/app/slices/constants";
 import axios from "axios";
 import { ConfettiProvider } from "./Confetti";
+import { useSelector } from "react-redux";
 
 const CourseHeader = ({
 	id,
@@ -27,6 +28,7 @@ const CourseHeader = ({
 
 	const [loading, setLoading] = useState<boolean>(false);
 	const [openConfetti, setOpenConfetti] = useState<boolean>(false);
+	const { userInfo } = useSelector((state: any) => state.auth);
 
 	const handlePublished = async () => {
 		try {
@@ -35,8 +37,8 @@ const CourseHeader = ({
 			const config = {
 				headers: {
 					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
 				},
-				withCredentials: true,
 			};
 
 			const endpoint = isPublished ? "unpublish" : "publish";

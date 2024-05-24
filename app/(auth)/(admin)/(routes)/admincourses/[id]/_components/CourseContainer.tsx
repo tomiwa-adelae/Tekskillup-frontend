@@ -18,6 +18,7 @@ import CourseWeekdayPrice from "./CourseWeekdayPrice";
 import CourseImage from "./CourseImage";
 import { Banner } from "./Banner";
 import { StepLoader } from "@/components/StepLoader";
+import { useSelector } from "react-redux";
 
 interface CourseProps {
 	_id: string;
@@ -38,11 +39,23 @@ const CourseContainer = ({ id }: { id: string }) => {
 	const [course, setCourse] = useState<CourseProps>();
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchCourseDetails = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
+
 				setLoading(true);
-				const res = await axios(`${BASE_URL}${COURSES_URL}/${id}`);
+				const res = await axios(
+					`${BASE_URL}${COURSES_URL}/${id}`,
+					config
+				);
 				setCourse({ ...res.data });
 				setLoading(false);
 			} catch (error: any) {

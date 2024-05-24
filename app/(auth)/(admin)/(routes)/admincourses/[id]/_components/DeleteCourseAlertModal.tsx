@@ -17,24 +17,26 @@ import axios from "axios";
 import { Loader2, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export function DeleteCourseAlertDialog({ id }: { id: string }) {
 	const router = useRouter();
 
 	const { toast } = useToast();
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const handleDelete = async () => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
-
 		try {
+			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			const res = await axios.delete(
 				`${BASE_URL}${COURSES_URL}/${id}`,
 				config

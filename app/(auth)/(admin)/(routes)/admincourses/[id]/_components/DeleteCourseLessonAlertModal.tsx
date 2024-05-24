@@ -16,6 +16,7 @@ import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { Loader2, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export function DeleteCourseLessonAlertDialog({
 	lessonId,
@@ -29,17 +30,17 @@ export function DeleteCourseLessonAlertDialog({
 	const { toast } = useToast();
 
 	const [loading, setLoading] = useState<boolean>(false);
+	const { userInfo } = useSelector((state: any) => state.auth);
 
 	const handleDelete = async () => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
-
 		try {
+			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			const res = await axios.delete(
 				`${BASE_URL}${COURSES_URL}/${courseId}/lessons/${lessonId}`,
 				config

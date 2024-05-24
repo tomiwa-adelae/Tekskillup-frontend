@@ -8,7 +8,7 @@ import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
 	Form,
@@ -34,6 +34,8 @@ const FirstNameBox = ({ firstName }: { firstName: string }) => {
 	const [editFirstName, setEditFirstName] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -49,8 +51,8 @@ const FirstNameBox = ({ firstName }: { firstName: string }) => {
 			const config = {
 				headers: {
 					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
 				},
-				withCredentials: true,
 			};
 
 			const res = await axios.put(

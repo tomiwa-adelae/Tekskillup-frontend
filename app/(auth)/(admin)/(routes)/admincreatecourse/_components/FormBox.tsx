@@ -23,6 +23,7 @@ import { BASE_URL, COURSES_URL } from "@/app/slices/constants";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useSelector } from "react-redux";
 
 const formSchema = z.object({
 	title: z
@@ -35,6 +36,8 @@ const FormBox = () => {
 	const { toast } = useToast();
 	const router = useRouter();
 	const [loading, setLoading] = useState<boolean>(false);
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -45,14 +48,14 @@ const FormBox = () => {
 
 	// 2. Define a submit handler.
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
 		try {
+			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			const res = await axios.post(
 				`${BASE_URL}${COURSES_URL}`,
 				values,
@@ -76,7 +79,7 @@ const FormBox = () => {
 		}
 	};
 	return (
-		<Card className="bg-gray-50 mt-8 w-full md:max-w-lg p-8 space-y-6">
+		<Card className="bg-gray-50 mt-8 w-full md:max-w-lg px-4 py-6 md:px-6 md:py-8  space-y-6">
 			<h1 className="text-2xl md:text-3xl text-green-400">
 				Name your course
 			</h1>
@@ -101,7 +104,7 @@ const FormBox = () => {
 										{...field}
 									/>
 								</FormControl>
-								<FormDescription>
+								<FormDescription className="text-xs md:text-sm">
 									What would you teach in this course?
 								</FormDescription>
 								<FormMessage />

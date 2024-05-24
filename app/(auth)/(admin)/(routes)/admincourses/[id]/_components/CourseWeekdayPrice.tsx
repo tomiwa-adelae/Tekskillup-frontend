@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { BASE_URL, COURSES_URL } from "@/app/slices/constants";
+import { useSelector } from "react-redux";
 import { Card } from "@/components/ui/card";
 
 const formSchema = z.object({
@@ -41,6 +42,8 @@ const CourseWeekdayPrice = ({
 	const [editPrice, setEditPrice] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -50,15 +53,13 @@ const CourseWeekdayPrice = ({
 
 	// 2. Define a submit handler.
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
-
 		try {
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			setLoading(true);
 
 			const res = await axios.put(

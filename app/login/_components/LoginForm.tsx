@@ -71,6 +71,7 @@ const LoginForm = () => {
 				config
 			);
 			dispatch(setCredentials({ ...res.data }));
+			console.log(res.data);
 			setLoading(false);
 			toast({
 				title: "Login successfully!",
@@ -90,7 +91,7 @@ const LoginForm = () => {
 	};
 
 	return (
-		<div className="bg-green-400 shadow-lg rounded-xl py-12 px-8 text-white">
+		<div className="bg-green-400 shadow-lg rounded-xl py-12 px-4 md:px-8 text-white">
 			<h3 className="text-center text-3xl mb-6">Sign in</h3>
 			<Form {...form}>
 				<form

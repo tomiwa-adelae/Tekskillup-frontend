@@ -9,6 +9,8 @@ import { BASE_URL, REGISTERED_COURSES_URL } from "@/app/slices/constants";
 import { NoCoursesAlert } from "./NoCoursesAlert";
 import { StepLoader } from "@/components/StepLoader";
 
+import { useSelector } from "react-redux";
+
 const RegisteredCourses = ({
 	id,
 	firstName,
@@ -22,18 +24,23 @@ const RegisteredCourses = ({
 	const [courses, setCourses] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchUserRegisteredCourses = async () => {
 			try {
 				setLoading(true);
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				const res = await axios.get(
 					`${BASE_URL}${REGISTERED_COURSES_URL}/${id}`,
-					{
-						withCredentials: true,
-					}
+					config
 				);
 				setCourses(res.data);
-				console.log(res.data);
 			} catch (error: any) {
 				setLoading(false);
 				toast({

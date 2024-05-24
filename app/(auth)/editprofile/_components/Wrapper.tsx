@@ -33,7 +33,7 @@ const Wrapper = () => {
 		setUser(userInfo);
 	}, [userInfo]);
 
-	if (!user) return <p>Loading...</p>;
+	if (!user) return;
 
 	return (
 		<div className="mt-8">

@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { BASE_URL, USERS_URL } from "@/app/slices/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
@@ -40,6 +40,8 @@ const PasswordsForm = () => {
 	const router = useRouter();
 	const { toast } = useToast();
 	const [loading, setLoading] = useState<boolean>(false);
+
+	const { userInfo } = useSelector((state: any) => state.auth);
 
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -66,8 +68,8 @@ const PasswordsForm = () => {
 				const config = {
 					headers: {
 						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
 					},
-					withCredentials: true,
 				};
 
 				const res = await axios.put(
@@ -99,7 +101,7 @@ const PasswordsForm = () => {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-4"
+					className="space-y-6"
 				>
 					<FormField
 						control={form.control}

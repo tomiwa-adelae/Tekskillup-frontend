@@ -24,7 +24,7 @@ const User = ({
 	phoneNumber,
 }: UserProps) => {
 	return (
-		<Card className="transition-all flex flex-col items-center justify-center gap-6 bg-gray-50 rounded-xl py-6 px-8 hover:bg-gray-100">
+		<Card className="transition-all flex flex-col items-center justify-center gap-6 bg-gray-50 rounded-xl py-6 px-4 md:px-8 hover:bg-gray-100">
 			<div className="flex items-center gap-4 justify-start w-full md:text-center md:flex-col">
 				<Image
 					src={image}
@@ -41,7 +41,7 @@ const User = ({
 					<p className="text-xs md:text-sm">{phoneNumber}</p>
 				</div>
 			</div>
-			<div className="w-full flex items-center justify-between gap-4">
+			<div className="w-full flex items-center justify-between gap-2 md:gap-4">
 				<Button
 					className="transition ease-in-out uppercase bg-green-400 hover:bg-green-500 w-full"
 					asChild

@@ -129,7 +129,7 @@ export const InfiniteMovingCards = ({
 								<p className="text-xs">{course.description}</p>
 							</div>
 							<Button
-								className="transition ease-in-out bg-transparent px-6 outline outline-1 outline-green-400 text-green-400 hover:bg-green-400 uppercase hover:text-white text-base"
+								className="transition ease-in-out bg-transparent px-6 outline outline-1 text-sm outline-green-400 text-green-400 hover:bg-green-400 uppercase hover:text-white"
 								asChild
 							>
 								<Link href={`/our-courses/${course._id}`}>

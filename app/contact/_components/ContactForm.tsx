@@ -97,7 +97,9 @@ const ContactForm = () => {
 						name="name"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Name</FormLabel>
+								<FormLabel className="text-xs md:text-sm">
+									Name
+								</FormLabel>
 								<FormControl className="text-black">
 									<Input
 										placeholder="e.g John Doe"
@@ -113,7 +115,9 @@ const ContactForm = () => {
 						name="email"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Email address</FormLabel>
+								<FormLabel className="text-xs md:text-sm">
+									Email address
+								</FormLabel>
 								<FormControl className="text-black">
 									<Input
 										placeholder="e.g. johndoe@gmail.com"
@@ -129,7 +133,9 @@ const ContactForm = () => {
 						name="phoneNumber"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Phone number</FormLabel>
+								<FormLabel className="text-xs md:text-sm">
+									Phone number
+								</FormLabel>
 								<FormControl className="text-black">
 									<Input
 										placeholder="e.g 08012345678"
@@ -145,7 +151,9 @@ const ContactForm = () => {
 						name="subject"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Subject</FormLabel>
+								<FormLabel className="text-xs md:text-sm">
+									Subject
+								</FormLabel>
 								<FormControl className="text-black">
 									<Input
 										placeholder="e.g. Buying courses"
@@ -161,7 +169,9 @@ const ContactForm = () => {
 						name="message"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Message</FormLabel>
+								<FormLabel className="text-xs md:text-sm">
+									Message
+								</FormLabel>
 								<FormControl>
 									<Textarea
 										placeholder="What do you want us to know?"

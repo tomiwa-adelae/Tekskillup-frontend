@@ -3,11 +3,11 @@ import { BookOpenCheck } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Course from "./Course";
 import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
 import { BASE_URL, REGISTERED_COURSES_URL } from "@/app/slices/constants";
 import axios from "axios";
 import { NoCoursesAlert } from "./NoCoursesAlert";
 import { StepLoader } from "@/components/StepLoader";
+import { useSelector } from "react-redux";
 
 interface Courses {
 	_id: string;
@@ -30,14 +30,16 @@ const RegisteredCourses = () => {
 	const [courses, setCourses] = useState<CoursesProps>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchAllCourses = async () => {
 			try {
 				const config = {
 					headers: {
 						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
 					},
-					withCredentials: true,
 				};
 				setLoading(true);
 				const res = await axios.get(
@@ -59,7 +61,7 @@ const RegisteredCourses = () => {
 			}
 		};
 		fetchAllCourses();
-	}, [toast]);
+	}, [toast, userInfo]);
 
 	if (loading) return <StepLoader />;
 

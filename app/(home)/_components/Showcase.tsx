@@ -18,7 +18,7 @@ const Showcase = () => {
 						Transform your career and become a skilled Tech
 						professional by enrolling with Tekskillup
 					</p>
-					<div className="flex items-center justify-center gap-5 mt-4">
+					<div className="flex items-center justify-center gap-3 md:gap-6 mt-4">
 						<Button
 							className="bg-green-200 py-8 px-8  hover:bg-green-300 uppercase"
 							asChild

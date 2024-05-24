@@ -18,6 +18,7 @@ import UserAnalyticsCharts from "./UserAnalyticsCharts";
 import { Card } from "@/components/ui/card";
 import RegisteredCoursesAnalyticsCharts from "./RegisteredCoursesAnalyticsCharts";
 import { StepLoader } from "@/components/StepLoader";
+import { useSelector } from "react-redux";
 
 interface Courses {
 	_id: string;
@@ -52,15 +53,22 @@ const DashboardBoxes = () => {
 	const [loadingRegisteredCourses, setLoadingRegisteredCourses] =
 		useState<boolean>(false);
 
-	console.log(registeredCourses);
+	const { userInfo } = useSelector((state: any) => state.auth);
 
 	useEffect(() => {
 		const fetchAllCourses = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				setLoadingCourses(true);
-				const res = await axios.get(`${BASE_URL}${COURSES_URL}`, {
-					withCredentials: true,
-				});
+				const res = await axios.get(
+					`${BASE_URL}${COURSES_URL}`,
+					config
+				);
 
 				setCourses(res.data);
 				setLoadingCourses(false);
@@ -71,17 +79,20 @@ const DashboardBoxes = () => {
 					title: "Uh oh! Something went wrong.",
 					description: error.response.data.message,
 				});
-				router.push("/login");
 			} finally {
 				setLoadingCourses(false);
 			}
 		};
 		const fetchAllUsers = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				setLoadingUsers(true);
-				const res = await axios.get(`${BASE_URL}${USERS_URL}`, {
-					withCredentials: true,
-				});
+				const res = await axios.get(`${BASE_URL}${USERS_URL}`, config);
 
 				setUsers(res.data);
 				setLoadingUsers(false);
@@ -92,19 +103,22 @@ const DashboardBoxes = () => {
 					title: "Uh oh! Something went wrong.",
 					description: error.response.data.message,
 				});
-				router.push("/login");
 			} finally {
 				setLoadingUsers(false);
 			}
 		};
 		const fetchAllRegisteredCourses = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				setLoadingRegisteredCourses(true);
 				const res = await axios.get(
 					`${BASE_URL}${REGISTERED_COURSES_URL}`,
-					{
-						withCredentials: true,
-					}
+					config
 				);
 
 				setRegisteredCourses(res.data);
@@ -116,7 +130,6 @@ const DashboardBoxes = () => {
 					title: "Uh oh! Something went wrong.",
 					description: error.response.data.message,
 				});
-				router.push("/login");
 			} finally {
 				setLoadingRegisteredCourses(false);
 			}
@@ -124,9 +137,10 @@ const DashboardBoxes = () => {
 		fetchAllCourses();
 		fetchAllUsers();
 		fetchAllRegisteredCourses();
-	}, [toast, router, setCourses]);
+	}, [toast, router, setCourses, userInfo]);
 
-	if (loadingCourses || loadingUsers) return <StepLoader />;
+	if (loadingCourses || loadingUsers || loadingRegisteredCourses)
+		return <StepLoader />;
 
 	return (
 		<div className="pt-8">
@@ -140,7 +154,7 @@ const DashboardBoxes = () => {
 			</h3>
 			<div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 				{courses && (
-					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 md:col-span-1 py-8">
+					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 md:col-span-1 py-14">
 						<Link
 							href="/admincourses"
 							className="flex flex-col items-center justify-center gap-6 w-full"
@@ -163,7 +177,7 @@ const DashboardBoxes = () => {
 				)}
 
 				{users && (
-					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 md:col-span-1 py-8">
+					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 md:col-span-1 py-14">
 						<Link
 							href="/adminusers"
 							className="w-full flex flex-col items-center justify-center gap-6"
@@ -186,8 +200,8 @@ const DashboardBoxes = () => {
 				)}
 
 				{users && (
-					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 py-8">
-						<div className="relative w-full flex flex-col items-center justify-center gap-6 px-8">
+					<Card className="flex items-center justify-center hover:bg-slate-50 col-span-2 py-14">
+						<div className="relative w-full flex flex-col items-center justify-center gap-6 px-4 md:px-8">
 							<Badge
 								className="absolute top-0 text-green-400 right-5 border-dashed border-green-400 p-2 md:p-4 font-light"
 								variant="outline"
@@ -207,23 +221,20 @@ const DashboardBoxes = () => {
 								/>
 								<div className="space-y-2">
 									<h4 className="text-lg md:text 2xl text-green-400">
-										{users[0]?.firstName || (
-											<p className="italic font-light">
-												No user
-											</p>
-										)}{" "}
+										{users[0]?.firstName}{" "}
 										{users[0]?.lastName}
 									</h4>
 									<p className="text-xs md:text-sm">
-										{users[0]?.email || (
-											<p className="italic font-light">
-												No user
-											</p>
-										)}
+										{users[0]?.email}
 									</p>
+									{users.length === 0 && (
+										<p className="italic font-light">
+											No user
+										</p>
+									)}
 								</div>
 							</div>
-							<div className="w-full flex items-center justify-between gap-4">
+							<div className="w-full flex items-center justify-between gap-2 md:gap-4">
 								{users.length !== 0 && (
 									<>
 										<Button
@@ -258,13 +269,13 @@ const DashboardBoxes = () => {
 				)}
 
 				<Card className="flex items-center justify-center col-span-2 hover:bg-slate-50">
-					<div className="flex w-full flex-col items-center justify-center gap-6 py-6 px-8">
+					<div className="flex w-full flex-col items-center justify-center gap-6 py-14 px-4 md:px-8">
 						<UserAnalyticsCharts users={users} />
 					</div>
 				</Card>
 
 				<Card className="flex items-center justify-center col-span-2 hover:bg-slate-50">
-					<div className="flex w-full flex-col items-center justify-center gap-6 py-6 px-8">
+					<div className="flex w-full flex-col items-center justify-center gap-6  py-14 px-4 md:px-8">
 						<RegisteredCoursesAnalyticsCharts
 							courses={registeredCourses}
 						/>

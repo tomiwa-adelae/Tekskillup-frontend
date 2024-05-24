@@ -27,7 +27,7 @@ const Course = ({
 	isPublished,
 }: CourseProps) => {
 	return (
-		<Card className="bg-gray-50 px-4 pb-4 space-y-4 transition-all ease-in-out relative">
+		<Card className="px-4 pb-4 space-y-8 transition-all ease-in-out relative">
 			<Badge
 				className={cn(
 					"absolute top-3 right-3 bg-slate-500 text-white uppercase font-light",

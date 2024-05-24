@@ -20,7 +20,7 @@ import {
 import { Editor } from "@/components/Editor";
 import { setCredentials } from "@/app/slices/authSlice";
 import { useToast } from "@/components/ui/use-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL, USERS_URL } from "@/app/slices/constants";
 import axios from "axios";
 import { Preview } from "@/components/Preview";
@@ -34,6 +34,8 @@ const BioBox = ({ bio }: { bio: string }) => {
 	const { toast } = useToast();
 	const [editBio, setEditBio] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
+
+	const { userInfo } = useSelector((state: any) => state.auth);
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -50,8 +52,8 @@ const BioBox = ({ bio }: { bio: string }) => {
 			const config = {
 				headers: {
 					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
 				},
-				withCredentials: true,
 			};
 
 			const res = await axios.put(

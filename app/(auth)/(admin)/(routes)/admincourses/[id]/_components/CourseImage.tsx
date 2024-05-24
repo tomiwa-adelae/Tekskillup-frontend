@@ -9,6 +9,7 @@ import { useDropzone } from "react-dropzone";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { BASE_URL, COURSES_URL } from "@/app/slices/constants";
+import { useSelector } from "react-redux";
 import { Card } from "@/components/ui/card";
 
 const CourseImage = ({
@@ -26,6 +27,8 @@ const CourseImage = ({
 	const [editImage, setEditImage] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const onDrop = useCallback(
 		(acceptedFiles: any) => {
 			acceptedFiles.forEach(async (file: any) => {
@@ -33,8 +36,8 @@ const CourseImage = ({
 					const config = {
 						headers: {
 							"Content-type": "application/json",
+							"x-auth-token": userInfo.token,
 						},
-						withCredentials: true,
 					};
 
 					const reader = new FileReader();

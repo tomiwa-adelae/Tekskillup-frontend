@@ -8,6 +8,7 @@ import { z } from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 import {
 	Form,
@@ -44,6 +45,8 @@ const CourseLessons = ({
 	const [editLesson, setEditLesson] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -53,15 +56,13 @@ const CourseLessons = ({
 
 	// 2. Define a submit handler.
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
-
 		try {
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			setLoading(true);
 
 			const res = await axios.post(
@@ -153,7 +154,7 @@ const CourseLessons = ({
 				<div className="space-y-2">
 					{lessons?.map(
 						(lesson: { _id: string; content: string }) => (
-							<h4
+							<div
 								key={lesson._id}
 								className="text-sm bg-green-100 rounded-md py-4 px-4 flex items-center justify-between"
 							>
@@ -168,7 +169,7 @@ const CourseLessons = ({
 										successUpdate(data)
 									}
 								/>
-							</h4>
+							</div>
 						)
 					)}
 					{lessons?.length === 0 && (

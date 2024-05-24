@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import SearchBox from "./SearchBox";
 import { StepLoader } from "@/components/StepLoader";
 import { NoCoursesAlert } from "./NoCoursesAlert";
+import { useSelector } from "react-redux";
 
 interface Courses {
 	_id: string;
@@ -31,13 +32,24 @@ const Courses = () => {
 	const [courses, setCourses] = useState<CoursesProps>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchAllCourses = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
+
 				setLoading(true);
-				const res = await axios.get(`${BASE_URL}${COURSES_URL}`, {
-					withCredentials: true,
-				});
+
+				const res = await axios.get(
+					`${BASE_URL}${COURSES_URL}`,
+					config
+				);
 
 				setCourses(res.data);
 				setLoading(false);

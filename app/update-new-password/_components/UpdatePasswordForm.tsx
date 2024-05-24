@@ -95,7 +95,7 @@ const UpdatePasswordForm = ({
 	};
 
 	return (
-		<div className="bg-green-400 shadow-lg rounded-2xl py-12 px-8 text-white">
+		<div className="bg-green-400 shadow-lg rounded-2xl py-12 px-4 md:px-8text-white">
 			<h3 className="md:hidden text-center text-3xl mb-6">
 				Update new password
 			</h3>

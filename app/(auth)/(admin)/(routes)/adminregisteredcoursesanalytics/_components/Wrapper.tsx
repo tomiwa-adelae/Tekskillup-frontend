@@ -13,6 +13,8 @@ import RegisteredCoursesAnalyticsCharts from "./RegisteredCoursesAnalyticsCharts
 import { StepLoader } from "@/components/StepLoader";
 import { NoRegisteredCoursesAlert } from "./NoRegisteredCoursesAlert";
 
+import { useSelector } from "react-redux";
+
 const Wrapper = () => {
 	const { toast } = useToast();
 	const router = useRouter();
@@ -20,15 +22,21 @@ const Wrapper = () => {
 	const [registeredCourses, setRegisteredCourses] = useState<any>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchAllRegisteredCourses = async () => {
 			try {
 				setLoading(true);
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				const res = await axios.get(
 					`${BASE_URL}${REGISTERED_COURSES_URL}`,
-					{
-						withCredentials: true,
-					}
+					config
 				);
 
 				setRegisteredCourses(res.data);

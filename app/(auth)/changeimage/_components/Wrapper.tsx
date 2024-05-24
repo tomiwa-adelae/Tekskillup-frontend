@@ -35,8 +35,8 @@ const Wrapper = () => {
 					const config = {
 						headers: {
 							"Content-type": "application/json",
+							"x-auth-token": userInfo.token,
 						},
-						withCredentials: true,
 					};
 
 					const reader = new FileReader();

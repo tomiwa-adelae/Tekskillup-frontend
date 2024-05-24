@@ -12,6 +12,8 @@ import { Separator } from "@/components/ui/separator";
 import RegisteredCourses from "./RegisteredCourses";
 import { StepLoader } from "@/components/StepLoader";
 
+import { useSelector } from "react-redux";
+
 interface UsersProps {
 	firstName: string;
 	lastName: string;
@@ -26,13 +28,22 @@ const Wrapper = ({ id }: { id: string }) => {
 	const [user, setUser] = useState<UsersProps>();
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const { userInfo } = useSelector((state: any) => state.auth);
+
 	useEffect(() => {
 		const fetchUserDetails = async () => {
 			try {
+				const config = {
+					headers: {
+						"Content-type": "application/json",
+						"x-auth-token": userInfo.token,
+					},
+				};
 				setLoading(true);
-				const res = await axios.get(`${BASE_URL}${USERS_URL}/${id}`, {
-					withCredentials: true,
-				});
+				const res = await axios.get(
+					`${BASE_URL}${USERS_URL}/${id}`,
+					config
+				);
 				setUser(res.data);
 			} catch (error: any) {
 				setLoading(false);

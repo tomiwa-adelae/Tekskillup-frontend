@@ -15,6 +15,8 @@ import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { Loader2, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+
 import { useState } from "react";
 
 export function DeleteUserAlertDialog({ id }: { id: string }) {
@@ -24,16 +26,17 @@ export function DeleteUserAlertDialog({ id }: { id: string }) {
 
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const handleDelete = async () => {
-		setLoading(true);
-		const config = {
-			headers: {
-				"Content-type": "application/json",
-			},
-			withCredentials: true,
-		};
+	const { userInfo } = useSelector((state: any) => state.auth);
 
+	const handleDelete = async () => {
 		try {
+			setLoading(true);
+			const config = {
+				headers: {
+					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
+				},
+			};
 			const res = await axios.delete(
 				`${BASE_URL}${USERS_URL}/${id}`,
 				config
