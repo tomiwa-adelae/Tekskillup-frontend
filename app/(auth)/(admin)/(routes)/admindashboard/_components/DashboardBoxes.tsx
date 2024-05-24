@@ -160,8 +160,8 @@ const DashboardBoxes = () => {
 							className="flex flex-col items-center justify-center gap-6 w-full"
 						>
 							<Image
-								src={"/pace-img.png"}
-								alt="Test"
+								src={"/laptop-icon.png"}
+								alt={"Courses icon"}
 								height={1000}
 								width={1000}
 								className="w-20 h-20 md:w-28 md:h-28 object-cover"
@@ -183,8 +183,8 @@ const DashboardBoxes = () => {
 							className="w-full flex flex-col items-center justify-center gap-6"
 						>
 							<Image
-								src={"/pace-img.png"}
-								alt="Test"
+								src={"/community-icon.png"}
+								alt="Users icon"
 								height={1000}
 								width={1000}
 								className="w-20 h-20 md:w-28 md:h-28 object-cover"
