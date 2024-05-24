@@ -86,7 +86,7 @@ const ResetForm = () => {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-4"
+					className="space-y-6"
 				>
 					<FormField
 						control={form.control}

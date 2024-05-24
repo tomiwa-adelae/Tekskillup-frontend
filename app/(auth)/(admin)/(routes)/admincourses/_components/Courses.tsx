@@ -65,7 +65,7 @@ const Courses = () => {
 			}
 		};
 		fetchAllCourses();
-	}, [router, toast]);
+	}, [router, toast, userInfo]);
 
 	if (loading) return <StepLoader />;
 

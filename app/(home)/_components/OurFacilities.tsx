@@ -16,11 +16,11 @@ const OurFacilities = () => {
 					</div>
 					<div className="flex-1">
 						<p className="text-xs md:text-sm">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Dicta iusto rerum dolore recusandae ducimus
-							iure. Odio hic dolor architecto dolorem eum porro
-							nesciunt error, soluta pariatur facere nihil nobis
-							possimus.
+							We&apos;ve established comfortable and conducive
+							learning facilities equipped with ample resources
+							for your access. Additionally, we&apos;ve invested
+							in unlimited internet to ensure our students face no
+							hindrances in their learning journey.
 						</p>
 					</div>
 				</div>

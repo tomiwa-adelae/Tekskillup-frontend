@@ -23,25 +23,25 @@ export function StudentTestimonials() {
 		testimony: string;
 	}[] = [
 		{
-			name: "Joseph Barack",
-			image: "/speaker-two.jpg",
+			name: "Tomiwa Adelae",
+			image: "/tomiwa-adelae.jpg",
 			portfolio: "Full stack developer",
 			testimony:
-				"Lorem ipsum dolor sit amet consecteturadipisicing elit. Neque, magni sitminima cumque dicta, iste ipsam aliquam,totam reprehenderit rerum veritatis eiusmolestiae dolorem libero maxime.Temporibus debitis mollitia nam rerum eaque aliquam modi sapiente accusantium, beatae perferendi Atque quia eostemporibus dolor ullam corporisvoluptate necessitatibus eligendi, id nobis harum rerum laborum officiis,facilis sunt saepe tempora animidolorem",
+				"Tekskillup has been one of the big push I needed to get in the real world space. I had an immense learning that was really different from the self learning I started with. The learning was fun and there were some internship job opportunities that were presented to us. I got my first gig immediately after the program. Thank you Tekskillup for that push I needed.",
 		},
 		{
 			name: "Michael Jordan",
-			image: "/speaker-two.jpg",
-			portfolio: "Full stack developer",
+			image: "/speaker-one.jpg",
+			portfolio: "Frontend React developer",
 			testimony:
-				"Lorem ipsum dolor sit amet consecteturadipisicing elit. Neque, magni sitminima cumque dicta, iste ipsam aliquam,totam reprehenderit rerum veritatis eiusmolestiae dolorem libero maxime.Temporibus debitis mollitia nam rerum eaque aliquam modi sapiente accusantium, beatae perferendi Atque quia eostemporibus dolor ullam corporisvoluptate necessitatibus eligendi, id nobis harum rerum laborum officiis,facilis sunt saepe tempora animidolorem",
+				"Tekskillup has been one of the big push I needed to get in the real world space. I had an immense learning that was really different from the self learning I started with. The learning was fun and there were some internship job opportunities that were presented to us. I got my first gig immediately after the program. Thank you Tekskillup for that push I needed.",
 		},
 		{
-			name: "Brad Traversy",
+			name: "David Okpor",
 			image: "/speaker-two.jpg",
-			portfolio: "Full stack developer",
+			portfolio: "Data Scientist",
 			testimony:
-				"Lorem ipsum dolor sit amet consecteturadipisicing elit. Neque, magni sitminima cumque dicta, iste ipsam aliquam,totam reprehenderit rerum veritatis eiusmolestiae dolorem libero maxime.Temporibus debitis mollitia nam rerum eaque aliquam modi sapiente accusantium, beatae perferendi Atque quia eostemporibus dolor ullam corporisvoluptate necessitatibus eligendi, id nobis harum rerum laborum officiis,facilis sunt saepe tempora animidolorem",
+				"Tekskillup has been one of the big push I needed to get in the real world space. I had an immense learning that was really different from the self learning I started with. The learning was fun and there were some internship job opportunities that were presented to us. I got my first gig immediately after the program. Thank you Tekskillup for that push I needed.",
 		},
 	];
 
@@ -87,7 +87,7 @@ export function StudentTestimonials() {
 												alt="Test"
 												height={1000}
 												width={1000}
-												className="w-28 h-28 md:w-32 md:h-32 rounded-full"
+												className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover"
 											/>
 											<h4 className="text-green-100 text-xl md:text-2xl my-4">
 												{testimony.name}

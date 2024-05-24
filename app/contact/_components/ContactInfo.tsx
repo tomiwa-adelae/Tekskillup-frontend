@@ -12,23 +12,21 @@ const ContactInfo = () => {
 				<div>
 					<h5 className="uppercase text-base">Our office location</h5>
 					<p className="text-xs md:text-sm mt-2">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Odio, atque!
+						The Petrus Place, Opposite Ntachi Osa, New Haven, Enugu
+						State.
 					</p>
 				</div>
 				<Separator className="bg-gray-300" />
 				<div>
 					<h5 className="uppercase text-base">Phone</h5>
-					<p className="text-xs md:text-sm mt-2">
-						L+234 098765432, +234 09876543
-					</p>
+					<p className="text-xs md:text-sm mt-2">+234 703 9967 834</p>
 				</div>
 				<Separator className="bg-gray-300" />
 
 				<div>
 					<h5 className="uppercase text-base">Email address</h5>
 					<p className="text-xs md:text-sm mt-2">
-						tkeskillup@gmail.com!
+						admin@tekskillup.com
 					</p>
 				</div>
 			</div>

@@ -53,7 +53,7 @@ const RegisteredCourses = ({
 			}
 		};
 		fetchUserRegisteredCourses();
-	}, [id, toast]);
+	}, [id, toast, userInfo]);
 
 	if (loading) return <StepLoader />;
 

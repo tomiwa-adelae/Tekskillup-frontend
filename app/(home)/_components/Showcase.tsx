@@ -15,18 +15,18 @@ const Showcase = () => {
 						<CodeXml className="inline" />
 					</h1>
 					<p className="text-xs md:text-sm text-gray-100">
-						Transform your career and become a skilled Tech
-						professional by enrolling with Tekskillup
+						Elevate your career and gain expertise as a tech
+						professional by enrolling at Tekkillup.
 					</p>
 					<div className="flex items-center justify-center gap-3 md:gap-6 mt-4">
 						<Button
-							className="bg-green-200 py-8 px-8  hover:bg-green-300 uppercase"
+							className="bg-green-200 py-6 px-6 lg:py-8 lg:px-8  hover:bg-green-300 uppercase"
 							asChild
 						>
 							<Link href="/register">Enroll now</Link>
 						</Button>
 						<Button
-							className="bg-transparent outline outline-2 outline-green-200 py-8 px-8 uppercase hover:bg-green-300"
+							className="bg-transparent outline outline-2 outline-green-200 py-6 px-6 lg:py-8 lg:px-8  uppercase hover:bg-green-300"
 							asChild
 						>
 							<Link href="/our-courses">Explore courses</Link>

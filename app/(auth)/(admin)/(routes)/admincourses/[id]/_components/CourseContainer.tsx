@@ -70,7 +70,7 @@ const CourseContainer = ({ id }: { id: string }) => {
 			}
 		};
 		fetchCourseDetails();
-	}, [id, toast]);
+	}, [id, toast, userInfo]);
 
 	const requiredFields = [
 		course?.image,

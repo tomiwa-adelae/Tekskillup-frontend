@@ -11,14 +11,15 @@ export function Showcase() {
 							We&apos;d love to hear from you😊
 						</h1>
 						<p className="text-xs md:text-sm text-gray-100 mt-4">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Error eveniet adipisci ipsum neque quasi earum
-							ratione possimus minima nulla et tenetur
+							Do you have questions about any of our courses,
+							pricing, policies, terms of service, benefits of
+							enrolling with us, our team is more than willing to
+							be of service.
 						</p>
 					</div>
 					<div className="flex-1">
 						<Image
-							src={"/home-showcase-img.png"}
+							src={"/contact-showcase-img.png"}
 							alt={"About page"}
 							height={1000}
 							width={1000}

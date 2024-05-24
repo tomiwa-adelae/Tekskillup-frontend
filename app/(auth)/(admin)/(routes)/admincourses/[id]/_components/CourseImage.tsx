@@ -85,7 +85,7 @@ const CourseImage = ({
 				}
 			});
 		},
-		[toast, id, successUpdate, editImage]
+		[toast, id, successUpdate, editImage, userInfo]
 	);
 
 	const { fileRejections, getRootProps, getInputProps } = useDropzone({

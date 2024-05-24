@@ -16,11 +16,12 @@ const WhereGraduatesWorks = () => {
 					</div>
 					<div className="flex-1">
 						<p className="text-xs md:text-sm">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Dicta iusto rerum dolore recusandae ducimus
-							iure. Odio hic dolor architecto dolorem eum porro
-							nesciunt error, soluta pariatur facere nihil nobis
-							possimus.
+							Our skilled graduates thrive in top companies
+							worldwide, bringing valuable contributions to their
+							personal development and the organizations they
+							join. They excel in diverse industries, including
+							Information Technology, Telecommunications, and
+							beyond.
 						</p>
 					</div>
 				</div>

@@ -54,7 +54,7 @@ const Wrapper = () => {
 			}
 		};
 		fetchAllRegisteredCourses();
-	}, [toast, router]);
+	}, [toast, router, userInfo]);
 
 	if (loading) return <StepLoader />;
 

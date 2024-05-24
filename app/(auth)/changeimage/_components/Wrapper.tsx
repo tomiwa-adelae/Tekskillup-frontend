@@ -83,7 +83,7 @@ const Wrapper = () => {
 				}
 			});
 		},
-		[toast, dispatch]
+		[toast, dispatch, userInfo]
 	);
 
 	const { fileRejections, getRootProps, getInputProps } = useDropzone({

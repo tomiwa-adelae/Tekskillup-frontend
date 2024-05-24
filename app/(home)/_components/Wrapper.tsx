@@ -71,13 +71,8 @@ const Wrapper = () => {
 			<OurFacilities />
 			<NewlyAddedCourse course={courses[0]} />
 			<NeedHelp
-				helpTitle="Need help choosing a course? Talk to an expert"
-				helpDescription="Lorem ipsum dolor sit amet consectetur, adipisicing
-						elit. Quas iste voluptates modi eos, amet iusto ea ad
-						doloribus, laboriosam quidem odio consequuntur aliquam
-						voluptatum dignissimos odit. Ut excepturi nostrum,
-						praesentium obcaecati, nihil a illum consequatur rem
-						nulla hic culpa aspernatur."
+				helpTitle="Require guidance in selecting a course? Consult with our experts."
+				helpDescription="Are you uncertain about which course to choose? Would you benefit from speaking with a tech expert regarding any tech-related issue? Our professionals are readily available and eager to assist you."
 				helpButtonName="Get in touch"
 				helpButtonLink="/contact"
 			/>

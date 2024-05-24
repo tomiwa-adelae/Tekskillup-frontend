@@ -11,14 +11,13 @@ export function Showcase() {
 							Frequently asked questions
 						</h1>
 						<p className="text-xs md:text-sm text-gray-100 mt-4">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Error eveniet adipisci ipsum neque quasi earum
-							ratione possimus minima nulla et tenetur
+							Here are quick answers to some of your frequently
+							asked questions.
 						</p>
 					</div>
 					<div className="flex-1">
 						<Image
-							src={"/home-showcase-img.png"}
+							src={"/faq-showcase-img.png"}
 							alt={"About page"}
 							height={1000}
 							width={1000}

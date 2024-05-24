@@ -20,19 +20,17 @@ const StartToday = () => {
 					Start your course today
 				</h5>
 				<h3 className="text-green-400 my-5 text-2xl md:text-3xl">
-					Acquire a Tech skill to transcend your current earning
-					status
+					Gain a tech skill to surpass your current earning potential.
 				</h3>
 				<p className="text-xs md:text-sm">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Quaerat, deserunt molestiae amet incidunt dolorem fuga eum
-					obcaecati eaque neque. Doloremque quia earum odit excepturi
-					magnam quis nulla debitis totam saepe qui quae, omnis, id
-					vitae porro tempora a accusantium neque voluptas vero minus
-					fugit beatae ipsum reiciendis non? At, vitae?
+					At Tekskillup, we offer high-quality and cost-effective
+					technology training tailored to meet the needs of our
+					students. Moreover, we ensure that all our students acquire
+					the essential tech skills required for relevant job
+					opportunities upon completing the program.
 				</p>
 				<Button
-					className="bg-green-400 transition-all duration-100 uppercase px-12 py-8 mt-8 hover:bg-green-500"
+					className="bg-green-400 transition-all duration-100 uppercase py-6 px-8 lg:px-12 lg:py-8 mt-8 hover:bg-green-500"
 					asChild
 				>
 					<Link href="/our-courses">Get started</Link>

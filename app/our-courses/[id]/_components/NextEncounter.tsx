@@ -17,7 +17,10 @@ const NextEncounter = ({
 			<div className="container">
 				<Card
 					className="bg-green-400 bg-no-repeat bg-right bg-auto py-8 px-6 md:px-8 lg:px-12 rounded-xl bg-scroll text-white"
-					style={{ backgroundImage: `url(/phone-icon.png)` }}
+					style={{
+						backgroundImage: `url(/next-icon.png)`,
+						backgroundPosition: "top 15px right 100px",
+					}}
 				>
 					<h3 className="text-xl md:text-2xl mb-6">
 						Next {title} class is:

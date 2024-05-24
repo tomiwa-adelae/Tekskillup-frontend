@@ -4,6 +4,13 @@ import React from "react";
 import Head from "./_components/Head";
 import { Separator } from "@/components/ui/separator";
 import RegisteredCourses from "./_components/RegisteredCourses";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "My profile | Tekskillup",
+	description:
+		"My profile - Who I am - Online Learning Made EasySign up to Enrol and begin taking Hot & In-demand Digital CoursesEnrol Now Go to Classroom All Courses Why Choose us? We provide seamless services to our students and online learners all over the globe. Go at your own pace Enjoy lifetime access to courses on Tekskillup Learn from industry experts Learn […]",
+};
 
 const page = () => {
 	return (

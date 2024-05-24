@@ -11,22 +11,20 @@ interface WhysProps {
 const WhyTekskillup = () => {
 	const whys: WhysProps[] = [
 		{
-			img: "/pace-img.png",
+			img: "/pace-icon.png",
 			title: "Go at your pace",
-			details:
-				"Lorem ipsum, dolor sit amet consectetur adipisicingelit. Praesentium, vitae!",
+			details: "Benefit from lifetime access to courses on Tekkillup.		",
 		},
 		{
-			img: "/pace-img.png",
-			title: "Go at your pace",
-			details:
-				"Lorem ipsum, dolor sit amet consectetur adipisicingelit. Praesentium, vitae!",
+			img: "/laptop-icon.png",
+			title: "Learn from industry experts",
+			details: "Learn from top industry experts and specialists.",
 		},
 		{
-			img: "/pace-img.png",
-			title: "Go at your pace",
+			img: "/certificate-icon.png",
+			title: "Certificate of Completion",
 			details:
-				"Lorem ipsum, dolor sit amet consectetur adipisicingelit. Praesentium, vitae!",
+				"Receive a certificate of completion when you finish our courses.",
 		},
 	];
 
@@ -37,12 +35,11 @@ const WhyTekskillup = () => {
 					Why choose Tekskillup?
 				</h5>
 				<h3 className="text-green-400 my-5 text-2xl lg:text-3xl">
-					We are customer centric
+					We prioritize our customers.
 				</h3>
 				<p className="text-xs md:text-sm mb-8 lg:w-5/6 mx-auto">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-					Aperiam minima eligendi consectetur libero molestias
-					corporis explicabo magni adipisci placeat at.
+					We deliver seamless service to our students and online
+					learners worldwide.
 				</p>
 
 				<div className="flex flex-col items-center justify-between gap-4 lg:flex-row">

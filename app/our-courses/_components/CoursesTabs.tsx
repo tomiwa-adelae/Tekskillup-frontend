@@ -144,7 +144,7 @@ export function CoursesTabs() {
 						</div>
 						<div className="flex items-center justify-end mt-8">
 							<Button
-								className="bg-green-400 py-8 px-8  hover:bg-inherit uppercase w-full md:w-auto transition-1ll duration-100 hover:bg-green-500"
+								className="bg-green-400 py-6 px-6 lg:py-8 lg:px-8 hover:bg-inherit uppercase w-full md:w-auto transition-1ll duration-100 hover:bg-green-500"
 								asChild
 							>
 								<Link href={`/our-courses/${course._id}`}>

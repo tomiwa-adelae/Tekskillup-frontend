@@ -11,20 +11,19 @@ interface ImpactsProps {
 const CreatingImpact = () => {
 	const impacts: ImpactsProps[] = [
 		{
-			icon: "/pace-img.png",
+			icon: "/laptop-icon.png",
 			title: "Courses",
-
-			number: "7+",
+			number: "7",
 		},
 		{
-			icon: "/pace-img.png",
-			title: "Courses",
-			number: 20,
+			icon: "/graduate-icon.png",
+			title: "Learners",
+			number: "50+",
 		},
 		{
-			icon: "/pace-img.png",
-			title: "Courses",
-			number: 250,
+			icon: "/time-icon.png",
+			title: "Hours of Content",
+			number: "250+",
 		},
 	];
 
@@ -33,12 +32,12 @@ const CreatingImpact = () => {
 			<div className="container">
 				<div className="text-center">
 					<h3 className="text-green-400 mb-5 text-2xl lg:text-3xl">
-						Creating impact around the world
+						Making a global impact
 					</h3>
-					<p className="text-xs md:text-sm">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Similique ea repellendus vel impedit corrupti sapiente
-						ipsum reprehenderit, in enim doloribus.
+					<p className="text-xs md:text-sm lg:w-5/6">
+						With our extensive global catalog covering the latest
+						skills and topics, individuals and organizations
+						worldwide can adapt to change and flourish.
 					</p>
 					<div className="mt-12 grid grid-cols-3 gap-4 lg:gap-8">
 						{impacts.map((impact, index: number) => (

@@ -58,7 +58,7 @@ const Wrapper = ({ id }: { id: string }) => {
 		};
 
 		fetchUserDetails();
-	}, [id, toast]);
+	}, [id, toast, userInfo]);
 
 	if (loading) return <StepLoader />;
 

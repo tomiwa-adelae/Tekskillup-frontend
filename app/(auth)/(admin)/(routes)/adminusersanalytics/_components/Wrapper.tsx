@@ -62,7 +62,7 @@ const Wrapper = () => {
 			}
 		};
 		fetchAllUsers();
-	}, [toast, router, setUsers]);
+	}, [toast, router, setUsers, userInfo]);
 
 	if (loading) return <StepLoader />;
 

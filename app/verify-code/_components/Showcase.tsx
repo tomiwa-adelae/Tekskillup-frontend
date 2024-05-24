@@ -5,7 +5,7 @@ const Showcase = () => {
 	return (
 		<div
 			className="py-16 bg-no-repeat bg-scroll bg-center bg-cover"
-			style={{ backgroundImage: `url(/test-image.jpg)` }}
+			style={{ backgroundImage: `url(/auth-showcase-img.jpg)` }}
 		>
 			<div className="bg-blend overlay"></div>
 			<div className="container flex flex-col md:flex-row gap-4 lg:gap-8 items-center justify-between">

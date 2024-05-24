@@ -6,28 +6,28 @@ import React from "react";
 const CoreValues = () => {
 	const values = [
 		{
-			icon: "/pace-img.png",
+			icon: "/flexibility-icon.png",
 			value: "Flexibility",
 		},
 		{
-			icon: "/pace-img.png",
-			value: "Flexibility",
+			icon: "/affordability-icon.png",
+			value: "Affordability",
 		},
 		{
-			icon: "/pace-img.png",
-			value: "Flexibility",
+			icon: "/accessibility-icon.png",
+			value: "Accessibility",
 		},
 		{
-			icon: "/pace-img.png",
-			value: "Flexibility",
+			icon: "/community-icon.png",
+			value: "Community",
 		},
 		{
-			icon: "/pace-img.png",
-			value: "Flexibility",
+			icon: "/quality-icon.png",
+			value: "Quality",
 		},
 		{
-			icon: "/pace-img.png",
-			value: "Flexibility",
+			icon: "/certificate-icon.png",
+			value: "Certificate",
 		},
 	];
 
@@ -35,12 +35,13 @@ const CoreValues = () => {
 		<div className="bg-white py-16">
 			<div className="container text-center">
 				<h3 className="text-green-400 mb-5 text-2xl lg:text-3xl">
-					Our core values
+					Our Core Values
 				</h3>
-				<p className="text-xs md:text-sm">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Similique ea repellendus vel impedit corrupti sapiente ipsum
-					reprehenderit, in enim doloribus.
+				<p className="text-xs md:text-sm lg:w-5/6">
+					At the core of Tekskillup are our fundamental values, which
+					serve as guiding principles influencing every facet of our
+					platform and community. These values aren&apos;t merely
+					words but the bedrock of our actions and decisions.
 				</p>
 				<div className="mt-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3">
 					{values.map((value, index) => (

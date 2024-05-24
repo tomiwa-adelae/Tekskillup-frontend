@@ -1,7 +1,12 @@
 import React from "react";
 import FormBox from "./_components/FormBox";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Create course | Admin | Tekskillup",
+	description:
+		"Create courses - Admin access - Online Learning Made EasySign up to Enrol and begin taking Hot & In-demand Digital CoursesEnrol Now Go to Classroom All Courses Why Choose us? We provide seamless services to our students and online learners all over the globe. Go at your own pace Enjoy lifetime access to courses on Tekskillup Learn from industry experts Learn […]",
+};
 
 const page = () => {
 	return (

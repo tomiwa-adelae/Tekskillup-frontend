@@ -97,7 +97,7 @@ export function MobileProfileDropDown({
 							width={1000}
 							className="w-12 h-12 transition-all border-0 rounded-full cursor-pointer hover:border border-1 border-green-100 object-cover"
 						/>
-						<h3 className="text-lg md:text-xl text-green-400">
+						<h3 className="text-base md:text-lg text-green-400">
 							{firstName} {lastName}
 						</h3>
 					</div>

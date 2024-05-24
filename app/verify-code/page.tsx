@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Suspense } from "react";
 
 import React from "react";
@@ -7,6 +9,12 @@ import NeedHelp from "@/components/NeedHelp";
 function Fallback() {
 	return <>placeholder</>;
 }
+
+export const metadata: Metadata = {
+	title: "Verify code | Tekskillup",
+	description:
+		"Verify code - Reset password - Online Learning Made EasySign up to Enrol and begin taking Hot & In-demand Digital CoursesEnrol Now Go to Classroom All Courses Why Choose us? We provide seamless services to our students and online learners all over the globe. Go at your own pace Enjoy lifetime access to courses on Tekskillup Learn from industry experts Learn […]",
+};
 
 const page = () => {
 	return (
