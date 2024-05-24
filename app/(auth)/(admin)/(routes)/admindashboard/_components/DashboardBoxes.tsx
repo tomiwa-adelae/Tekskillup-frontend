@@ -270,7 +270,7 @@ const DashboardBoxes = () => {
 
 				<Card className="flex items-center justify-center col-span-2 hover:bg-slate-50">
 					<div className="flex w-full flex-col items-center justify-center gap-6 py-14 px-4 md:px-8">
-						{/* <UserAnalyticsCharts users={users} /> */}
+						<UserAnalyticsCharts users={users} />
 					</div>
 				</Card>
 
