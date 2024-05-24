@@ -30,8 +30,8 @@ const Showcase = ({
 			const config = {
 				headers: {
 					"Content-type": "application/json",
+					"x-auth-token": userInfo.token,
 				},
-				withCredentials: true,
 			};
 
 			const { email, firstName, lastName, phoneNumber } = userInfo;
