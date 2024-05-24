@@ -17,7 +17,7 @@ import {
 const UserAnalyticsCharts = ({ users }: any) => {
 	// Extract dates and count occurrences
 	const dateCounts = users.reduce((acc: any, user: any) => {
-		const date = new Date(user.createdAt).toISOString().split("T")[0]; // Extract date part
+		const date = new Date(user?.createdAt).toISOString().split("T")[0]; // Extract date part
 		acc[date] = (acc[date] || 0) + 1; // Count occurrences
 		return acc;
 	}, {});

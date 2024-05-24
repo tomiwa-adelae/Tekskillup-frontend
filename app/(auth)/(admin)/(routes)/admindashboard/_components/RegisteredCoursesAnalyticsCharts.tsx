@@ -17,7 +17,7 @@ import {
 const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 	// Extract dates and count occurrences
 	const dateCounts = courses.reduce((acc: any, entry: any) => {
-		const date = new Date(entry.course.createdAt)
+		const date = new Date(entry?.course?.createdAt)
 			.toISOString()
 			.split("T")[0]; // Extract date part
 		acc[date] = (acc[date] || 0) + 1; // Count occurrences
