@@ -17,14 +17,12 @@ import {
 const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 	// // Extract dates and count occurrences
 	const dateCounts = courses?.reduce((acc: any, entry: any) => {
-		const date = new Date(entry?.course?.createdAt)
-			.toISOString()
-			.split("T")[0]; // Extract date part
+		const date = new Date(entry?.createdAt).toISOString().split("T")[0]; // Extract date part
 		acc[date] = (acc[date] || 0) + 1; // Count occurrences
 		return acc;
 	}, {});
 
-	// Prepare data for Recharts
+	// // Prepare data for Recharts
 	const chartData = Object.keys(dateCounts).map((date) => ({
 		date,
 		Number: dateCounts[date],
@@ -32,7 +30,7 @@ const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 
 	return (
 		<>
-			{/* <div className="flex w-full items-center justify-between">
+			<div className="flex w-full items-center justify-between">
 				<h4 className="text-lg md:text-xl text-green-400">
 					Registered courses analytics
 				</h4>
@@ -67,7 +65,7 @@ const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 						radius={[4, 4, 0, 0]}
 					/>
 				</BarChart>
-			</ResponsiveContainer> */}
+			</ResponsiveContainer>
 		</>
 	);
 };
