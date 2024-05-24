@@ -1,11 +1,18 @@
+import { Suspense } from "react";
 import React from "react";
 import Showcase from "./_components/Showcase";
 import NeedHelp from "@/components/NeedHelp";
 
+function Fallback() {
+	return <>placeholder</>;
+}
+
 const page = () => {
 	return (
 		<div>
-			<Showcase />
+			<Suspense fallback={<Fallback />}>
+				<Showcase />
+			</Suspense>
 			<NeedHelp
 				helpTitle="Need help choosing a course? Talk to an expert"
 				helpDescription="Lorem ipsum dolor sit amet consectetur, adipisicing

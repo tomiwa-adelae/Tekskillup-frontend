@@ -16,7 +16,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { BASE_URL, USERS_URL } from "@/app/slices/constants";
@@ -29,13 +29,15 @@ const formSchema = z.object({
 		.min(2, { message: "Confirm password is required!" }),
 });
 
-const UpdatePasswordForm = () => {
-	const searchParams = useSearchParams();
-
-	const id = searchParams.get("id");
-	const code = searchParams.get("code");
-	const email = searchParams.get("email");
-
+const UpdatePasswordForm = ({
+	id,
+	code,
+	email,
+}: {
+	id: string;
+	code: string;
+	email: string;
+}) => {
 	const { toast } = useToast();
 	const router = useRouter();
 	const [loading, setLoading] = useState<boolean>(false);
