@@ -60,6 +60,7 @@ const LoginForm = () => {
 		const config = {
 			headers: {
 				"Content-type": "application/json",
+				"Access-Control-Allow-Origin": `${BASE_URL}`,
 			},
 			withCredentials: true,
 		};
