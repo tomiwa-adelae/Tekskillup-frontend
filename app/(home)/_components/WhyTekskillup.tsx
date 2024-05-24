@@ -54,7 +54,7 @@ const WhyTekskillup = () => {
 						) => (
 							<Card
 								key={index}
-								className="flex flex-col items-center justify-center py-10 px-6 rounded-xl"
+								className="flex flex-col items-center justify-center py-10 px-6 rounded-xl w-full"
 							>
 								<Image
 									src={why.img}
