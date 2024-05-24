@@ -15,8 +15,8 @@ import {
 } from "recharts";
 
 const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
-	// Extract dates and count occurrences
-	const dateCounts = courses.reduce((acc: any, entry: any) => {
+	// // Extract dates and count occurrences
+	const dateCounts = courses?.reduce((acc: any, entry: any) => {
 		const date = new Date(entry?.course?.createdAt)
 			.toISOString()
 			.split("T")[0]; // Extract date part
@@ -32,7 +32,7 @@ const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 
 	return (
 		<>
-			<div className="flex w-full items-center justify-between">
+			{/* <div className="flex w-full items-center justify-between">
 				<h4 className="text-lg md:text-xl text-green-400">
 					Registered courses analytics
 				</h4>
@@ -67,7 +67,7 @@ const RegisteredCoursesAnalyticsCharts = ({ courses }: any) => {
 						radius={[4, 4, 0, 0]}
 					/>
 				</BarChart>
-			</ResponsiveContainer>
+			</ResponsiveContainer> */}
 		</>
 	);
 };
