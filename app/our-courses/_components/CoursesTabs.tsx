@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaNairaSign } from "react-icons/fa6";
 import Moment from "react-moment";
+import { motion } from "framer-motion";
 
 interface Courses {
 	_id: string;
@@ -70,89 +71,108 @@ export function CoursesTabs() {
 			</TabsList>
 			{courses.map((course) => (
 				<TabsContent key={course._id} value={course.title}>
-					<Card className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 p-4 md:p-6 lg:p-8">
-						<div className="flex flex-col lg:flex-row items-start justify-between gap-6">
-							<div className="">
-								<Image
-									src={course.image}
-									alt={course.title}
-									height={1000}
-									width={1000}
-									className="aspect-video lg:w-96 object-cover rounded-lg"
-								/>
-							</div>
-							<div className="flex-1">
-								<h3 className="text-2xl md:text-3xl">
-									{course.title}
-								</h3>
-								<p className="text-xs md:text-sm mt-2 md:mt-4">
-									{course.description}
-								</p>
-							</div>
-						</div>
-						<Separator className="my-8 bg-green-400" />
-						<div className="flex flex-col lg:flex-row items-start justify-start lg:justify-between">
-							<div>
-								<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
-									Online
-								</h6>
-								<div className="space-y-2 md:space-y-4">
-									<h5 className="text-sm md:text-base">
-										<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
-										Price: #{course.onlinePrice}
-									</h5>
+					<motion.div
+						initial="hidden"
+						whileInView="visible"
+						transition={{ duration: 0.5, delay: 0.5 }}
+						variants={{
+							visible: { opacity: 1 },
+							hidden: { opacity: 0 },
+						}}
+					>
+						<Card className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 p-4 md:p-6 lg:p-8">
+							<div className="flex flex-col lg:flex-row items-start justify-between gap-6">
+								<motion.div
+									initial="hidden"
+									whileInView="visible"
+									transition={{ duration: 1.7, delay: 1.2 }}
+									variants={{
+										visible: { opacity: 1 },
+										hidden: { opacity: 0 },
+									}}
+									className=""
+								>
+									<Image
+										src={course.image}
+										alt={course.title}
+										height={1000}
+										width={1000}
+										className="aspect-video lg:w-96 object-cover rounded-lg"
+									/>
+								</motion.div>
+								<div className="flex-1">
+									<h3 className="text-2xl md:text-3xl">
+										{course.title}
+									</h3>
+									<p className="text-xs md:text-sm mt-2 md:mt-4">
+										{course.description}
+									</p>
 								</div>
 							</div>
-							<Separator className="my-8 lg:hidden bg-green-400" />
-							<div>
-								<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
-									Weekdays
-								</h6>
-								<div className="space-y-2 md:space-y-4">
-									<h5 className="text-sm md:text-base">
-										<CalendarClock className="inline text-green-400 mr-2 w-5 h-5" />{" "}
-										Start date:
-										<Moment format="DD-MMM-YYYY">
-											{course.weekdayStartDate}
-										</Moment>
-									</h5>
-									<h5 className="text-sm md:text-base">
-										<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
-										Price: #{course.weekdayPrice}
-									</h5>
+							<Separator className="my-8 bg-green-400" />
+							<div className="flex flex-col lg:flex-row items-start justify-start lg:justify-between">
+								<div>
+									<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
+										Online
+									</h6>
+									<div className="space-y-2 md:space-y-4">
+										<h5 className="text-sm md:text-base">
+											<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
+											Price: #{course.onlinePrice}
+										</h5>
+									</div>
+								</div>
+								<Separator className="my-8 lg:hidden bg-green-400" />
+								<div>
+									<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
+										Weekdays
+									</h6>
+									<div className="space-y-2 md:space-y-4">
+										<h5 className="text-sm md:text-base">
+											<CalendarClock className="inline text-green-400 mr-2 w-5 h-5" />{" "}
+											Start date:
+											<Moment format="DD-MMM-YYYY">
+												{course.weekdayStartDate}
+											</Moment>
+										</h5>
+										<h5 className="text-sm md:text-base">
+											<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
+											Price: #{course.weekdayPrice}
+										</h5>
+									</div>
+								</div>
+								<Separator className="my-8 lg:hidden bg-green-400" />
+								<div>
+									<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
+										Weekend
+									</h6>
+									<div className="space-y-2 md:space-y-4">
+										<h5 className="text-sm md:text-base">
+											<CalendarClock className="inline text-green-400 mr-2 w-5 h-5" />{" "}
+											Start date:{" "}
+											<Moment format="DD-MMM-YYYY">
+												{course.weekendStartDate}
+											</Moment>
+										</h5>
+										<h5 className="text-sm md:text-base">
+											<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
+											Price: #{course.weekendPrice}
+										</h5>
+									</div>
 								</div>
 							</div>
-							<Separator className="my-8 lg:hidden bg-green-400" />
-							<div>
-								<h6 className="font-semibold text-xs md:text-sm uppercase mb-4">
-									Weekend
-								</h6>
-								<div className="space-y-2 md:space-y-4">
-									<h5 className="text-sm md:text-base">
-										<CalendarClock className="inline text-green-400 mr-2 w-5 h-5" />{" "}
-										Start date:{" "}
-										<Moment format="DD-MMM-YYYY">
-											{course.weekendStartDate}
-										</Moment>
-									</h5>
-									<h5 className="text-sm md:text-base">
-										<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />{" "}
-										Price: #{course.weekendPrice}
-									</h5>
-								</div>
+							<div className="flex items-center justify-end mt-8">
+								<Button
+									className="bg-green-400 py-6 px-6 lg:py-8 lg:px-8 hover:bg-inherit uppercase w-full md:w-auto transition-1ll duration-100 hover:bg-green-500"
+									asChild
+								>
+									<Link href={`/our-courses/${course._id}`}>
+										View course details
+									</Link>
+								</Button>
 							</div>
-						</div>
-						<div className="flex items-center justify-end mt-8">
-							<Button
-								className="bg-green-400 py-6 px-6 lg:py-8 lg:px-8 hover:bg-inherit uppercase w-full md:w-auto transition-1ll duration-100 hover:bg-green-500"
-								asChild
-							>
-								<Link href={`/our-courses/${course._id}`}>
-									View course details
-								</Link>
-							</Button>
-						</div>
-					</Card>
+						</Card>
+					</motion.div>
 				</TabsContent>
 			))}
 		</Tabs>

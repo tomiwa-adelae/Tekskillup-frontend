@@ -23,15 +23,17 @@ const NeedHelp = ({
 						{helpTitle}{" "}
 						<PhoneCall className="inline text-green-100" />
 					</h3>
-					<p className="text-xs lg:text-sm text-gray-100 lg:w-8/12 mb-8">
+					<p className="text-xs lg:text-sm text-gray-100 mb-8">
 						{helpDescription}
 					</p>
-					<Button
-						className="bg-transparent outline outline-1 outline-white py-6 px-6 lg:py-8 lg:px-8 uppercase hover:text-green-400 hover:bg-white"
-						asChild
-					>
-						<Link href={helpButtonLink}>{helpButtonName}</Link>
-					</Button>
+					<div>
+						<Button
+							className="bg-transparent outline outline-1 outline-white py-6 px-6 lg:py-8 lg:px-8 uppercase hover:text-green-400 hover:bg-white"
+							asChild
+						>
+							<Link href={helpButtonLink}>{helpButtonName}</Link>
+						</Button>
+					</div>
 				</Card>
 			</div>
 		</div>

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CoursesSlider } from "./CoursesSlider";
+import { motion } from "framer-motion";
 
 interface CoursesProps {
 	_id: string;
@@ -21,7 +22,15 @@ interface CoursesProps {
 
 const OurOffers = ({ courses }: { courses: CoursesProps[] }) => {
 	return (
-		<div className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16">
+		<motion.div
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
+			transition={{
+				delay: 0.75,
+				duration: 1,
+			}}
+			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
+		>
 			<div className="container ">
 				<div className="text-center">
 					<h5 className="uppercase text-xs lg:text-sm">
@@ -37,15 +46,29 @@ const OurOffers = ({ courses }: { courses: CoursesProps[] }) => {
 					</p>
 
 					<CoursesSlider courses={courses} />
-					<Button
-						className="bg-green-400 py-6 px-8  lg:px-12 lg:py-8 mt-8 uppercase transition-all duration-100 hover:bg-green-500"
-						asChild
+					<motion.div
+						initial="hidden"
+						whileInView="visible"
+						transition={{
+							duration: 0.75,
+							delay: 1,
+							type: "tween",
+						}}
+						variants={{
+							visible: { scale: [0, 1, 1.1, 1] },
+							hidden: { scale: 0 },
+						}}
 					>
-						<Link href="/our-courses">View all courses</Link>
-					</Button>
+						<Button
+							className="bg-green-400 py-6 px-8  lg:px-12 lg:py-8 mt-8 uppercase transition-all duration-100 hover:bg-green-500"
+							asChild
+						>
+							<Link href="/our-courses">View all courses</Link>
+						</Button>
+					</motion.div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

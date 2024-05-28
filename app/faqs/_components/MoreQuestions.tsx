@@ -1,10 +1,25 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
+import { motion } from "framer-motion";
 
 const MoreQuestions = () => {
 	return (
-		<div className="bg-green-400 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8 py-8 px-8">
+		<motion.div
+			initial="hidden"
+			whileInView="visible"
+			transition={{
+				duration: 1,
+				delay: 0.2,
+				type: "spring",
+				stiffness: 120,
+			}}
+			variants={{
+				visible: { y: 0 },
+				hidden: { y: 100 },
+			}}
+			className="bg-green-400 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8 py-8 px-8"
+		>
 			<div>
 				<h3 className="uppercase text-lg md:text-xl lg:text-2xl text-white">
 					Still have some questions?
@@ -20,7 +35,7 @@ const MoreQuestions = () => {
 			>
 				<Link href="/contact">Get in touch</Link>
 			</Button>
-		</div>
+		</motion.div>
 	);
 };
 

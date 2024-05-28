@@ -1,7 +1,8 @@
+"use client";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import React from "react";
+import { motion } from "framer-motion";
 
 const CoreValues = () => {
 	const values = [
@@ -43,25 +44,51 @@ const CoreValues = () => {
 					platform and community. These values aren&apos;t merely
 					words but the bedrock of our actions and decisions.
 				</p>
-				<div className="mt-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					transition={{
+						duration: 2.2,
+						delay: 0.5,
+						type: "tween",
+					}}
+					variants={{
+						visible: { y: 0, opacity: 1 },
+						hidden: { y: 100, opacity: 0 },
+					}}
+					className="mt-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3"
+				>
 					{values.map((value, index) => (
 						<Card
 							key={index}
 							className="flex flex-col items-center text-center justify-center gap-4 md:gap-8 bg-green-100 rounded-xl py-4"
 						>
-							<Image
-								src={value.icon}
-								alt={value.value}
-								height={1000}
-								width={1000}
-								className="w-16 md:w-24"
-							/>
+							<motion.div
+								initial={{ x: 0 }}
+								whileInView={{
+									x: [-1, 0, 1, -1, 0, 1, -1, 0, 1],
+								}}
+								transition={{
+									delay: 0.2,
+									duration: 0.5,
+									type: "spring",
+									stiffness: 150,
+								}}
+							>
+								<Image
+									src={value.icon}
+									alt={value.value}
+									height={1000}
+									width={1000}
+									className="w-16 md:w-24"
+								/>
+							</motion.div>
 							<h5 className="text-sm md:text-base lg:text-lg font-semibold">
 								{value.value}
 							</h5>
 						</Card>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);

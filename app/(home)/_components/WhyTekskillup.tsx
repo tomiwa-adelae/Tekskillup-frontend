@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface WhysProps {
 	img: string;
@@ -29,7 +30,15 @@ const WhyTekskillup = () => {
 	];
 
 	return (
-		<div className="container bg-white py-16">
+		<motion.div
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
+			transition={{
+				delay: 0.5,
+				duration: 0.75,
+			}}
+			className="container bg-white py-16"
+		>
 			<div className="text-center">
 				<h5 className="uppercase text-xs lg:text-sm">
 					Why choose Tekskillup?
@@ -54,15 +63,28 @@ const WhyTekskillup = () => {
 						) => (
 							<Card
 								key={index}
-								className="flex flex-col items-center justify-center py-10 px-6 rounded-xl w-full"
+								className="flex flex-col items-center justify-center py-10 px-6 rounded-xl w-full min-h-80"
 							>
-								<Image
-									src={why.img}
-									alt={why.title}
-									height={1000}
-									width={1000}
-									className="w-24 md:w-32"
-								/>
+								<motion.div
+									initial={{ scale: 0 }}
+									whileInView={{
+										scale: [0, 1, 1.1, 1, 1.1, 1],
+									}}
+									transition={{
+										delay: 0.2,
+										duration: 0.5,
+										type: "spring",
+										stiffness: 150,
+									}}
+								>
+									<Image
+										src={why.img}
+										alt={why.title}
+										height={1000}
+										width={1000}
+										className="w-24 md:w-32"
+									/>
+								</motion.div>
 								<div>
 									<h4 className="text-green-400 mt-3 text-lg font-medium">
 										{why.title}
@@ -76,7 +98,7 @@ const WhyTekskillup = () => {
 					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

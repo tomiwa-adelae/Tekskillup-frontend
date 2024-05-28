@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import { motion } from "framer-motion";
 
 import Faq from "./Faq";
 import MoreQuestions from "./MoreQuestions";
@@ -34,7 +35,16 @@ const Faqs = () => {
 	];
 
 	return (
-		<div className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16">
+		<motion.div
+			initial="hidden"
+			whileInView="visible"
+			transition={{ duration: 0.5, delay: 0.5 }}
+			variants={{
+				visible: { opacity: 1 },
+				hidden: { opacity: 0 },
+			}}
+			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
+		>
 			<div className="container">
 				<div className="px-0 md:px-10 mb-8">
 					{questions.map((question, index) => (
@@ -47,7 +57,7 @@ const Faqs = () => {
 				</div>
 				<MoreQuestions />
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -1,6 +1,6 @@
 import { CircleCheckBig } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import { motion } from "framer-motion";
 
 interface LessonProps {
 	_id: string;
@@ -14,27 +14,53 @@ const Lessons = ({ lessons }: any) => {
 				<h3 className="text-green-400 text-center mb-5 text-2xl lg:text-3xl">
 					What you will learn
 				</h3>
-				<div className="flex flex-col-reverse gap-4 items-center lg:flex-row lg:justify-between mt-10">
-					<div className="space-y-6 flex-3">
+				<div className="flex flex-col-reverse gap-4 items-center lg:flex-row lg:justify-center mt-10">
+					<div className="space-y-6 flex-1">
 						{lessons.map((lesson: LessonProps) => (
-							<h5
+							<motion.h5
+								initial="hidden"
+								whileInView="visible"
+								transition={{
+									duration: 1,
+									delay: 0.2,
+									type: "spring",
+									stiffness: 120,
+								}}
+								variants={{
+									visible: { y: 0 },
+									hidden: { y: 50 },
+								}}
 								key={lesson._id}
 								className="text-xs md:text-sm"
 							>
 								<CircleCheckBig className="text-green-400 inline mr-2 w-4 h-4" />
 								{lesson.content}
-							</h5>
+							</motion.h5>
 						))}
 					</div>
-					<div className="flex-auto flex items-center justify-center">
+					<motion.div
+						initial="hidden"
+						whileInView="visible"
+						transition={{
+							duration: 1,
+							delay: 0.2,
+							type: "spring",
+							stiffness: 120,
+						}}
+						variants={{
+							visible: { x: 0 },
+							hidden: { x: 200 },
+						}}
+						className="flex-auto flex items-center justify-center"
+					>
 						<Image
-							src={"/pace-img.png"}
+							src={"/learn-icon.svg"}
 							alt="Study cap"
 							height={1000}
 							width={1000}
-							className="w-24 h-24 md:w-32 md:h-32"
+							className="w-24 h-24 md:w-32 md:h-32 mx-auto"
 						/>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</div>

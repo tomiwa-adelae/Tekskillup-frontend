@@ -1,5 +1,3 @@
-import React from "react";
-
 const AboutFacility = () => {
 	return (
 		<div className="hidden p-8 bg-gradient-to-r from-green-100 via-gray-100 to-green-100 text-center rounded-full absolute top-1/4 left-full -translate-x-full -translate-y-1/4 z-10 w-96 h-96 lg:flex items-center justify-center flex-col shadow-md">

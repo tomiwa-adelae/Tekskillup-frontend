@@ -1,12 +1,23 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Footer = () => {
 	return (
 		<footer className="bg-green-400 pt-16 pb-8 text-white uppercase text-xs">
-			<div className="container">
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				transition={{ duration: 2, delay: 0.2 }}
+				variants={{
+					visible: { opacity: 1 },
+					hidden: { opacity: 0 },
+				}}
+				className="container"
+			>
 				<div className="flex flex-col items-start justify-start gap-8 text-center md:text-left md:flex-row md:justify-between">
 					<div className="transition ease-in-out space-y-8 w-full">
 						<Link
@@ -73,7 +84,7 @@ const Footer = () => {
 						</p>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</footer>
 	);
 };

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import { motion } from "framer-motion";
 import { Meteors } from "@/components/ui/meteors";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,15 @@ export function Team({
 	facebookLink: string;
 }) {
 	return (
-		<div className="w-full relative">
+		<motion.div
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
+			transition={{
+				delay: 0.5,
+				duration: 0.75,
+			}}
+			className="w-full relative"
+		>
 			<div className="absolute inset-0 h-full w-full bg-gradient-to-r from-green-400 to-green-200 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
 			<Card className="relative bg-white border border-green-100  px-4 py-10 h-full overflow-hidden rounded-xl flex flex-col justify-center items-center gap-4">
 				<Image
@@ -75,6 +84,6 @@ export function Team({
 
 				<Meteors number={20} />
 			</Card>
-		</div>
+		</motion.div>
 	);
 }

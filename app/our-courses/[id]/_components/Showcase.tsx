@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import RegisterCourseForm from "./RegisterCourseForm";
 import { useSelector } from "react-redux";
@@ -76,14 +77,53 @@ const Showcase = ({
 		>
 			<div className="container flex flex-col lg:flex-row gap-4 lg:gap-8 items-start justify-between">
 				<div className="flex-1 w-full text-white mt-10">
-					<h1 className="text-3xl text-center md:text-4xl lg:text-5xl lg:text-left lg:leading-tight">
+					<motion.h1
+						initial="hidden"
+						whileInView="visible"
+						transition={{
+							duration: 1.2,
+							delay: 0.4,
+							type: "spring",
+							stiffness: 120,
+						}}
+						variants={{
+							visible: { y: 0 },
+							hidden: { y: 100 },
+						}}
+						className="text-3xl text-center md:text-4xl lg:text-5xl lg:text-left lg:leading-tight"
+					>
 						{title}
-					</h1>
-					<p className="text-xs md:text-sm text-center lg:text-left mt-4 mb-6 text-slate-200">
+					</motion.h1>
+					<motion.p
+						initial="hidden"
+						whileInView="visible"
+						transition={{
+							duration: 1.2,
+							delay: 0.4,
+							type: "spring",
+							stiffness: 120,
+						}}
+						variants={{
+							visible: { y: 0 },
+							hidden: { y: 200 },
+						}}
+						className="text-xs md:text-sm text-center lg:text-left mt-4 mb-6 text-slate-200"
+					>
 						{description}
-					</p>
+					</motion.p>
 				</div>
-				<div
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					transition={{
+						duration: 1.25,
+						delay: 0.75,
+						type: "tween",
+					}}
+					variants={{
+						visible: { scale: [0, 1, 1.1, 1] },
+						hidden: { scale: 0 },
+					}}
 					className={cn(
 						"flex-auto w-full lg:max-w-screen-sm",
 						userInfo && "w-auto flex-0 lg:max-w-96 mx-auto"
@@ -115,7 +155,7 @@ const Showcase = ({
 					) : (
 						<RegisterCourseForm />
 					)}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);

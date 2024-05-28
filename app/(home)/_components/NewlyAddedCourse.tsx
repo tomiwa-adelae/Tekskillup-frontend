@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, Hourglass } from "lucide-react";
 import Image from "next/image";
@@ -29,7 +30,20 @@ const NewlyAddedCourse = ({ course }: { course: CourseProps }) => {
 	return (
 		<div className="bg-white mb-16">
 			<div className="container flex flex-col lg:flex-row-reverse gap-8">
-				<div className="flex-1">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					transition={{
+						duration: 2.2,
+						delay: 0.5,
+						type: "tween",
+					}}
+					variants={{
+						visible: { y: 0, opacity: 1 },
+						hidden: { y: 100, opacity: 0 },
+					}}
+					className="flex-1"
+				>
 					<Image
 						src={course?.image}
 						alt={course?.title}
@@ -37,7 +51,7 @@ const NewlyAddedCourse = ({ course }: { course: CourseProps }) => {
 						width={1000}
 						className="aspect-video rounded-xl object-cover"
 					/>
-				</div>
+				</motion.div>
 				<div className="flex-1">
 					<h5 className="uppercase text-xs lg:text-sm">
 						Newly added course
@@ -45,7 +59,18 @@ const NewlyAddedCourse = ({ course }: { course: CourseProps }) => {
 					<h3 className="text-green-400 my-5 text-2xl lg:text-3xl">
 						{course.title}
 					</h3>
-					<p className="text-xs md:text-sm">{course.description}</p>
+					<motion.p
+						initial="hidden"
+						whileInView="visible"
+						transition={{ duration: 1.5, delay: 0.5 }}
+						variants={{
+							visible: { opacity: 1 },
+							hidden: { opacity: 0 },
+						}}
+						className="text-xs md:text-sm"
+					>
+						{course.description}
+					</motion.p>
 					<div className="font-bold space-y-4 text-xs lg:text-sm mt-6">
 						<h6>
 							<FaNairaSign className="inline text-green-400 mr-2 w-4 h-4" />

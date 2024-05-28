@@ -15,12 +15,7 @@ const page = () => {
 			<Showcase />
 			<NeedHelp
 				helpTitle="Need help choosing a course? Talk to an expert"
-				helpDescription="Lorem ipsum dolor sit amet consectetur, adipisicing
-						elit. Quas iste voluptates modi eos, amet iusto ea ad
-						doloribus, laboriosam quidem odio consequuntur aliquam
-						voluptatum dignissimos odit. Ut excepturi nostrum,
-						praesentium obcaecati, nihil a illum consequatur rem
-						nulla hic culpa aspernatur."
+				helpDescription="Are you indecisive about what course to choose? Would you like to talk to a Tech expert over any tech related issue? We have professionals in place who are ready and willing to be of help."
 				helpButtonName="Get in touch"
 				helpButtonLink="/contact"
 			/>

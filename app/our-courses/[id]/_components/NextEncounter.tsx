@@ -1,6 +1,7 @@
+"use client";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import React from "react";
+import { motion } from "framer-motion";
 import Moment from "react-moment";
 
 const NextEncounter = ({
@@ -13,7 +14,16 @@ const NextEncounter = ({
 	weekdayStartDate: string;
 }) => {
 	return (
-		<div className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16">
+		<motion.div
+			initial="hidden"
+			whileInView="visible"
+			transition={{ duration: 0.5, delay: 0.5 }}
+			variants={{
+				visible: { opacity: 1 },
+				hidden: { opacity: 0 },
+			}}
+			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
+		>
 			<div className="container">
 				<Card
 					className="bg-green-400 bg-no-repeat bg-right bg-auto py-8 px-6 md:px-8 lg:px-12 rounded-xl bg-scroll text-white"
@@ -50,7 +60,7 @@ const NextEncounter = ({
 					</div>
 				</Card>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

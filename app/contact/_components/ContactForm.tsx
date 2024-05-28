@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -86,120 +87,134 @@ const ContactForm = () => {
 	};
 
 	return (
-		<Card className="bg-green-400 shadow-lg rounded-xl py-8 px-8 text-white">
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-4"
-				>
-					<FormField
-						control={form.control}
-						name="name"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-xs md:text-sm">
-									Name
-								</FormLabel>
-								<FormControl className="text-black">
-									<Input
-										placeholder="e.g John Doe"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-xs md:text-sm">
-									Email address
-								</FormLabel>
-								<FormControl className="text-black">
-									<Input
-										placeholder="e.g. johndoe@gmail.com"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="phoneNumber"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-xs md:text-sm">
-									Phone number
-								</FormLabel>
-								<FormControl className="text-black">
-									<Input
-										placeholder="e.g 08012345678"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="subject"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-xs md:text-sm">
-									Subject
-								</FormLabel>
-								<FormControl className="text-black">
-									<Input
-										placeholder="e.g. Buying courses"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="message"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-xs md:text-sm">
-									Message
-								</FormLabel>
-								<FormControl>
-									<Textarea
-										placeholder="What do you want us to know?"
-										className="text-black"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<Button
-						className="bg-green-200 w-full font-semibold uppercase"
-						type="submit"
-						disabled={loading || success}
+		<motion.div
+			initial="hidden"
+			whileInView="visible"
+			transition={{
+				duration: 1,
+				delay: 0.2,
+				type: "tween",
+			}}
+			variants={{
+				visible: { x: 0, opacity: 1 },
+				hidden: { x: -400, opacity: 0 },
+			}}
+		>
+			<Card className="bg-green-400 shadow-lg rounded-xl py-8 px-8 text-white">
+				<Form {...form}>
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className="space-y-4"
 					>
-						{loading ? (
-							<>
-								<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
-								Please wait
-							</>
-						) : (
-							"Submit"
-						)}
-					</Button>
-				</form>
-			</Form>
-		</Card>
+						<FormField
+							control={form.control}
+							name="name"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-xs md:text-sm">
+										Name
+									</FormLabel>
+									<FormControl className="text-black">
+										<Input
+											placeholder="e.g John Doe"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-xs md:text-sm">
+										Email address
+									</FormLabel>
+									<FormControl className="text-black">
+										<Input
+											placeholder="e.g. johndoe@gmail.com"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="phoneNumber"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-xs md:text-sm">
+										Phone number
+									</FormLabel>
+									<FormControl className="text-black">
+										<Input
+											placeholder="e.g 08012345678"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="subject"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-xs md:text-sm">
+										Subject
+									</FormLabel>
+									<FormControl className="text-black">
+										<Input
+											placeholder="e.g. Buying courses"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name="message"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-xs md:text-sm">
+										Message
+									</FormLabel>
+									<FormControl>
+										<Textarea
+											placeholder="What do you want us to know?"
+											className="text-black"
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<Button
+							className="bg-green-200 w-full font-semibold uppercase"
+							type="submit"
+							disabled={loading || success}
+						>
+							{loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+									Please wait
+								</>
+							) : (
+								"Submit"
+							)}
+						</Button>
+					</form>
+				</Form>
+			</Card>
+		</motion.div>
 	);
 };
 

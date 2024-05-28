@@ -1,12 +1,21 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { motion } from "framer-motion";
 
 const StartToday = () => {
 	return (
 		<div className="container flex flex-col lg:flex-row items-start justify-center gap-8 pb-16">
-			<div className="flex-1">
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				transition={{ duration: 1.7, delay: 1.2 }}
+				variants={{
+					visible: { opacity: 1 },
+					hidden: { opacity: 0 },
+				}}
+				className="flex-1"
+			>
 				<Image
 					src={"/speaker-two.jpg"}
 					alt="Speakers"
@@ -14,7 +23,7 @@ const StartToday = () => {
 					height={1000}
 					className="aspect-video rounded-xl object-cover"
 				/>
-			</div>
+			</motion.div>
 			<div className="flex-1">
 				<h5 className="uppercase text-xs lg:text-sm">
 					Start your course today

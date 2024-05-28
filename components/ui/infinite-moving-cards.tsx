@@ -6,12 +6,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "./button";
 import { Card } from "./card";
+import { motion } from "framer-motion";
 
 export const InfiniteMovingCards = ({
 	courses,
 	direction = "left",
-	speed = "fast",
-	pauseOnHover = true,
+	speed = "slow",
+	pauseOnHover = false,
 	className,
 }: {
 	courses: {
