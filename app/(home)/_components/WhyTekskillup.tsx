@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface WhysProps {
 	img: string;
@@ -29,14 +29,19 @@ const WhyTekskillup = () => {
 		},
 	];
 
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{
 				delay: 0.5,
 				duration: 0.75,
 			}}
+			ref={ref}
 			className="container bg-white py-16"
 		>
 			<div className="text-center">
@@ -67,9 +72,7 @@ const WhyTekskillup = () => {
 							>
 								<motion.div
 									initial={{ scale: 0 }}
-									whileInView={{
-										scale: [0, 1, 1.1, 1, 1.1, 1],
-									}}
+									animate={isInView ? { scale: 1 } : {}}
 									transition={{
 										delay: 0.2,
 										duration: 0.5,

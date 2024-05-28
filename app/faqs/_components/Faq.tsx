@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import {
 	Accordion,
@@ -7,21 +7,22 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useRef } from "react";
 
 const Faq = ({ question, answer }: { question: string; answer: string }) => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
 	return (
 		<motion.div
-			initial="hidden"
-			whileInView="visible"
+		ref={ref}
+		initial={{ y: 100, }}
+		animate={isInView ? { y: 0, } : {}}
 			transition={{
 				duration: 1,
 				delay: 0.2,
 				type: "spring",
 				stiffness: 120,
-			}}
-			variants={{
-				visible: { y: 0 },
-				hidden: { y: 100 },
 			}}
 		>
 			<Accordion

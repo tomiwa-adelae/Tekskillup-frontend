@@ -1,6 +1,7 @@
 import { CircleCheckBig } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface LessonProps {
 	_id: string;
@@ -8,8 +9,12 @@ interface LessonProps {
 }
 
 const Lessons = ({ lessons }: any) => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
-		<div className="bg-white py-16">
+		<div ref={ref} className="bg-white py-16">
 			<div className="container">
 				<h3 className="text-green-400 text-center mb-5 text-2xl lg:text-3xl">
 					What you will learn
@@ -18,17 +23,13 @@ const Lessons = ({ lessons }: any) => {
 					<div className="space-y-6 flex-1">
 						{lessons.map((lesson: LessonProps) => (
 							<motion.h5
-								initial="hidden"
-								whileInView="visible"
+								initial={{ y: 50 }}
+								animate={isInView ? { y: 0 } : {}}
 								transition={{
 									duration: 1,
 									delay: 0.2,
 									type: "spring",
 									stiffness: 120,
-								}}
-								variants={{
-									visible: { y: 0 },
-									hidden: { y: 50 },
 								}}
 								key={lesson._id}
 								className="text-xs md:text-sm"
@@ -39,17 +40,13 @@ const Lessons = ({ lessons }: any) => {
 						))}
 					</div>
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ x: "100vw" }}
+						animate={isInView ? { x: 0 } : {}}
 						transition={{
 							duration: 1,
 							delay: 0.2,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { x: 0 },
-							hidden: { x: 200 },
 						}}
 						className="flex-auto flex items-center justify-center"
 					>

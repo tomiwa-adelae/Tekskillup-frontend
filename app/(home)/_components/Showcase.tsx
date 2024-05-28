@@ -6,7 +6,7 @@ import React from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animationData from "../../../public/animation-2.json";
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Showcase = () => {
 	const words = [
@@ -30,30 +30,26 @@ const Showcase = () => {
 
 	const techRef = useRef<LottieRefCurrentProps>(null);
 
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
-		<div className="bg-green-400 pt-12 pb-16">
+		<div ref={ref} className="bg-green-400 pt-12 pb-16">
 			<motion.div
-				initial="hidden"
-				whileInView="visible"
+				initial={{ opacity: 0 }}
+				animate={isInView ? { opacity: 1 } : {}}
 				transition={{ duration: 0.5, delay: 0.5 }}
-				variants={{
-					visible: { opacity: 1 },
-					hidden: { opacity: 0 },
-				}}
 				className="container flex flex-col-reverse items-center justify-center gap-5 lg:flex-row min-h-[50vh]"
 			>
 				<motion.div
-					initial="hidden"
-					whileInView="visible"
+					initial={{ x: "-100vw" }}
+					animate={isInView ? { x: 0 } : {}}
 					transition={{
 						duration: 1,
 						delay: 0.2,
 						type: "spring",
 						stiffness: 120,
-					}}
-					variants={{
-						visible: { x: 0 },
-						hidden: { x: -400 },
 					}}
 					className="text-center text-white flex items-center justify-center gap-4 flex-col lg:items-start lg:text-left"
 				>
@@ -80,26 +76,15 @@ const Showcase = () => {
 					</div>
 				</motion.div>
 				<motion.div
-					initial="hidden"
-					whileInView="visible"
+					initial={{ scale: 0 }}
+					animate={isInView ? { scale: [0, 1, 1.1, 1] } : {}}
 					transition={{
 						duration: 1.25,
 						delay: 0.75,
 						type: "tween",
 					}}
-					variants={{
-						visible: { scale: [0, 1, 1.1, 1] },
-						hidden: { scale: 0 },
-					}}
 					className="flex-1"
 				>
-					{/* <Image
-						src={"/animation-1.json"}
-						alt="Home showcase image"
-						height={1000}
-						width={1000}
-						className="w-auto"
-					/> */}
 					<Lottie lottieRef={techRef} animationData={animationData} />
 				</motion.div>
 			</motion.div>

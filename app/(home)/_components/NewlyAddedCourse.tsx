@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, Hourglass } from "lucide-react";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { FaNairaSign } from "react-icons/fa6";
 import { Separator } from "@/components/ui/separator";
 import Moment from "react-moment";
+import { useRef } from "react";
 
 interface CourseProps {
 	_id: string;
@@ -25,22 +26,22 @@ interface CourseProps {
 }
 
 const NewlyAddedCourse = ({ course }: { course: CourseProps }) => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	if (!course) return;
 
 	return (
-		<div className="bg-white mb-16">
+		<div ref={ref} className="bg-white mb-16">
 			<div className="container flex flex-col lg:flex-row-reverse gap-8">
 				<motion.div
-					initial="hidden"
-					whileInView="visible"
+					initial={{ y: 100, opacity: 0 }}
+					animate={isInView ? { y: 0, opacity: 1 } : {}}
 					transition={{
 						duration: 2.2,
 						delay: 0.5,
 						type: "tween",
-					}}
-					variants={{
-						visible: { y: 0, opacity: 1 },
-						hidden: { y: 100, opacity: 0 },
 					}}
 					className="flex-1"
 				>
@@ -60,13 +61,9 @@ const NewlyAddedCourse = ({ course }: { course: CourseProps }) => {
 						{course.title}
 					</h3>
 					<motion.p
-						initial="hidden"
-						whileInView="visible"
+						initial={{ opacity: 0 }}
+						animate={isInView ? { opacity: 1 } : {}}
 						transition={{ duration: 1.5, delay: 0.5 }}
-						variants={{
-							visible: { opacity: 1 },
-							hidden: { opacity: 0 },
-						}}
 						className="text-xs md:text-sm"
 					>
 						{course.description}

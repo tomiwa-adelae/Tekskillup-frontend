@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface ImpactsProps {
 	icon: string;
@@ -29,10 +30,15 @@ const CreatingImpact = () => {
 		},
 	];
 
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
+			ref={ref}
 			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{
 				delay: 0.5,
 				duration: 0.75,
@@ -53,9 +59,9 @@ const CreatingImpact = () => {
 						{impacts.map((impact, index: number) => (
 							<motion.div
 								initial={{ scale: 0 }}
-								whileInView={{
-									scale: [0, 1, 1.1, 1, 1.1, 1],
-								}}
+								animate={
+									isInView ? { scale: [0, 1, 1.1, 1] } : {}
+								}
 								transition={{
 									delay: 0.2,
 									duration: 0.5,

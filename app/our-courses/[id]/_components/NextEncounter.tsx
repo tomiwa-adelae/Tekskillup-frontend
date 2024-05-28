@@ -1,8 +1,9 @@
 "use client";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Moment from "react-moment";
+import { useRef } from "react";
 
 const NextEncounter = ({
 	title,
@@ -13,15 +14,16 @@ const NextEncounter = ({
 	weekendStartDate: string;
 	weekdayStartDate: string;
 }) => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
-			initial="hidden"
-			whileInView="visible"
+			ref={ref}
+			initial={{ opacity: 0 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{ duration: 0.5, delay: 0.5 }}
-			variants={{
-				visible: { opacity: 1 },
-				hidden: { opacity: 0 },
-			}}
 			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
 		>
 			<div className="container">

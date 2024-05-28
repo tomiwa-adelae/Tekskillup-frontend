@@ -1,11 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Meteors } from "@/components/ui/meteors";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { useRef } from "react";
 
 export function Team({
 	name,
@@ -22,10 +23,15 @@ export function Team({
 	twitterLink: string;
 	facebookLink: string;
 }) {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
+			ref={ref}
 			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{
 				delay: 0.5,
 				duration: 0.75,

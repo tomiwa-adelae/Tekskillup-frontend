@@ -1,18 +1,25 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const StartToday = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
-		<div className="container flex flex-col lg:flex-row items-start justify-center gap-8 pb-16">
+		<div
+			ref={ref}
+			className="container flex flex-col lg:flex-row items-start justify-center gap-8 pb-16"
+		>
 			<motion.div
-				initial="hidden"
-				whileInView="visible"
-				transition={{ duration: 1.7, delay: 1.2 }}
-				variants={{
-					visible: { opacity: 1 },
-					hidden: { opacity: 0 },
+				initial={{ opacity: 0 }}
+				animate={isInView ? { opacity: 1 } : {}}
+				transition={{
+					duration: 1,
+					delay: 0.2,
 				}}
 				className="flex-1"
 			>

@@ -1,67 +1,59 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import SmallShowcase from "./SmallShowcase";
+import { useRef } from "react";
 
 export function Showcase() {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<div className="py-16 w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] relative flex items-center justify-center">
-			<div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black)]"></div>
+			<div
+				ref={ref}
+				className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black)]"
+			></div>
 			<motion.div
-				initial="hidden"
-				whileInView="visible"
+				initial={{ opacity: 0 }}
+				animate={isInView ? { opacity: 1 } : {}}
 				transition={{ duration: 0.5, delay: 0.5 }}
-				variants={{
-					visible: { opacity: 1 },
-					hidden: { opacity: 0 },
-				}}
 				className="container"
 			>
 				<div className="flex flex-col-reverse items-center justify-between gap-8 lg:flex-row">
 					<div className="flex-1 text-center lg:text-left space-y-5">
 						<motion.h5
-							initial="hidden"
-							whileInView="visible"
+							initial={{ y: 0 }}
+							animate={isInView ? { y: 0 } : {}}
 							transition={{
 								duration: 1,
 								delay: 0.2,
 								type: "spring",
 								stiffness: 120,
 							}}
-							variants={{
-								visible: { y: 0 },
-								hidden: { y: 100 },
-							}}
 							className="uppercase text-xs lg:text-sm"
 						>
 							Know more about us
 						</motion.h5>
 						<motion.h1
-							initial="hidden"
-							whileInView="visible"
+							initial={{ y: 200 }}
+							animate={isInView ? { y: 0 } : {}}
 							transition={{
 								duration: 1.2,
 								delay: 0.4,
 								type: "spring",
 								stiffness: 120,
 							}}
-							variants={{
-								visible: { y: 0 },
-								hidden: { y: 200 },
-							}}
 							className="text-[44px] leading-relaxed md:text-6xl md:leading-snug lg:text-7xl lg:leading-relaxed text-green-400"
 						>
 							About us
 						</motion.h1>
 						<motion.p
-							initial="hidden"
-							whileInView="visible"
+							initial={{ opacity: 0 }}
+							animate={isInView ? { opacity: 1 } : {}}
 							transition={{ duration: 1, delay: 1.5 }}
-							variants={{
-								visible: { opacity: 1 },
-								hidden: { opacity: 0 },
-							}}
 							className="text-xs md:text-sm mt-4"
 						>
 							Welcome to Tekskillup, your gateway to mastering
@@ -71,25 +63,17 @@ export function Showcase() {
 							expertise needed to thrive in the digital age.
 						</motion.p>
 						<motion.h5
-							initial="hidden"
-							whileInView="visible"
+							initial={{ opacity: 0 }}
+							animate={isInView ? { opacity: 0 } : {}}
 							transition={{ duration: 1, delay: 1.5 }}
-							variants={{
-								visible: { opacity: 1 },
-								hidden: { opacity: 0 },
-							}}
 							className="text-base text-green-400 font-semibold uppercase"
 						>
 							Our mission:
 						</motion.h5>
 						<motion.p
-							initial="hidden"
-							whileInView="visible"
+							initial={{ opacity: 0 }}
+							animate={isInView ? { opacity: 1 } : {}}
 							transition={{ duration: 1, delay: 1.5 }}
-							variants={{
-								visible: { opacity: 1 },
-								hidden: { opacity: 0 },
-							}}
 							className="text-xs md:text-sm"
 						>
 							Tekskillup is on a mission to democratize education,
@@ -100,25 +84,17 @@ export function Showcase() {
 							full potential and shape the future.
 						</motion.p>
 						<motion.h5
-							initial="hidden"
-							whileInView="visible"
+							initial={{ opacity: 0 }}
+							animate={isInView ? { opacity: 1 } : {}}
 							transition={{ duration: 1, delay: 1.5 }}
-							variants={{
-								visible: { opacity: 1 },
-								hidden: { opacity: 0 },
-							}}
 							className="text-base text-green-400 font-semibold uppercase"
 						>
 							What distinguishes us?
 						</motion.h5>
 						<motion.p
-							initial="hidden"
-							whileInView="visible"
+							initial={{ opacity: 0 }}
+							animate={isInView ? { opacity: 1 } : {}}
 							transition={{ duration: 1, delay: 1.5 }}
-							variants={{
-								visible: { opacity: 1 },
-								hidden: { opacity: 0 },
-							}}
 							className="text-xs md:text-sm"
 						>
 							Our platform offers a diverse range of courses
@@ -135,16 +111,12 @@ export function Showcase() {
 						</p>
 					</div>
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ scale: 0 }}
+						animate={isInView ? { scale: [0, 1, 1.1, 1] } : {}}
 						transition={{
 							duration: 1.25,
 							delay: 0.75,
 							type: "tween",
-						}}
-						variants={{
-							visible: { scale: [0, 1, 1.1, 1] },
-							hidden: { scale: 0 },
 						}}
 						className="flex-1"
 					>

@@ -2,25 +2,29 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { CircleCheckBig } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ProcessShowcase = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
-		<div className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16">
+		<div
+			ref={ref}
+			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
+		>
 			<div className="container flex flex-col items-center justify-center lg:flex-row text-white gap-8">
 				<Card className="p-8 flex-1 text-white bg-green-400 rounded-xl">
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ opacity: 0, y: 100 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
 						transition={{
 							duration: 0.75,
 							delay: 0.2,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0, opacity: 1 },
-							hidden: { y: 100, opacity: 0 },
 						}}
 					>
 						<h4 className="text-base md:text-lg mb-3 uppercase lg:text-2xl">
@@ -36,17 +40,13 @@ const ProcessShowcase = () => {
 					</motion.div>
 					<Separator className="my-5" />
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ opacity: 0, y: 100 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
 						transition={{
 							duration: 1,
 							delay: 0.5,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0, opacity: 1 },
-							hidden: { y: 100, opacity: 0 },
 						}}
 					>
 						<h4 className="text-base md:text-lg mb-3 uppercase lg:text-2xl">
@@ -61,17 +61,13 @@ const ProcessShowcase = () => {
 					</motion.div>
 					<Separator className="my-5" />
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ opacity: 0, y: 100 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
 						transition={{
 							duration: 1.25,
 							delay: 0.75,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0, opacity: 1 },
-							hidden: { y: 100, opacity: 0 },
 						}}
 					>
 						<h4 className="text-base md:text-lg mb-3 uppercase lg:text-2xl">
@@ -91,16 +87,12 @@ const ProcessShowcase = () => {
 					</motion.div>
 				</Card>
 				<motion.div
-					initial="hidden"
-					whileInView="visible"
+					initial={{ opacity: 0, x: "100vw" }}
+					animate={isInView ? { opacity: 1, x: 0 } : {}}
 					transition={{
 						duration: 3,
 						delay: 0.2,
 						type: "tween",
-					}}
-					variants={{
-						visible: { x: 0, opacity: 1 },
-						hidden: { x: 300, opacity: 0 },
 					}}
 					className="flex-1"
 				>

@@ -1,6 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import React, { useRef, useState } from "react";
 import RegisterCourseForm from "./RegisterCourseForm";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
@@ -70,42 +70,39 @@ const Showcase = ({
 		}
 	};
 
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<div
+			ref={ref}
 			className="py-16 bg-no-repeat bg-scroll bg-center bg-cover"
 			style={{ backgroundImage: `url(/course-showcase-img.jpg)` }}
 		>
 			<div className="container flex flex-col lg:flex-row gap-4 lg:gap-8 items-start justify-between">
 				<div className="flex-1 w-full text-white mt-10">
 					<motion.h1
-						initial="hidden"
-						whileInView="visible"
+						initial={{ y: 100 }}
+						animate={isInView ? { y: 0 } : {}}
 						transition={{
 							duration: 1.2,
 							delay: 0.4,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0 },
-							hidden: { y: 100 },
 						}}
 						className="text-3xl text-center md:text-4xl lg:text-5xl lg:text-left lg:leading-tight"
 					>
 						{title}
 					</motion.h1>
 					<motion.p
-						initial="hidden"
-						whileInView="visible"
+						initial={{ y: 100 }}
+						animate={isInView ? { y: 0 } : {}}
 						transition={{
 							duration: 1.2,
 							delay: 0.4,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0 },
-							hidden: { y: 200 },
 						}}
 						className="text-xs md:text-sm text-center lg:text-left mt-4 mb-6 text-slate-200"
 					>
@@ -113,16 +110,12 @@ const Showcase = ({
 					</motion.p>
 				</div>
 				<motion.div
-					initial="hidden"
-					whileInView="visible"
+					initial={{ scale: 0 }}
+					animate={isInView ? { scale: [0, 1, 1.1, 1] } : {}}
 					transition={{
 						duration: 1.25,
 						delay: 0.75,
 						type: "tween",
-					}}
-					variants={{
-						visible: { scale: [0, 1, 1.1, 1] },
-						hidden: { scale: 0 },
 					}}
 					className={cn(
 						"flex-auto w-full lg:max-w-screen-sm",

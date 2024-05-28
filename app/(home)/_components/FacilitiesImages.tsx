@@ -8,7 +8,7 @@ export function FaciltiesImages() {
 	return (
 		<motion.div
 			initial="hidden"
-			whileInView="visible"
+			animate="visible"
 			transition={{ duration: 0.5, delay: 0.5 }}
 			variants={{
 				visible: { opacity: 1 },

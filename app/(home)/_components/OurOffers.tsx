@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CoursesSlider } from "./CoursesSlider";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface CoursesProps {
 	_id: string;
@@ -21,14 +22,19 @@ interface CoursesProps {
 }
 
 const OurOffers = ({ courses }: { courses: CoursesProps[] }) => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{
 				delay: 0.75,
 				duration: 1,
 			}}
+			ref={ref}
 			className="bg-gradient-to-r from-green-100 via-gray-100 to-green-100 py-16"
 		>
 			<div className="container ">
@@ -47,16 +53,12 @@ const OurOffers = ({ courses }: { courses: CoursesProps[] }) => {
 
 					<CoursesSlider courses={courses} />
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ scale: 0 }}
+						animate={isInView ? { scale: [0, 1, 1.1, 1] } : {}}
 						transition={{
 							duration: 0.75,
 							delay: 1,
 							type: "tween",
-						}}
-						variants={{
-							visible: { scale: [0, 1, 1.1, 1] },
-							hidden: { scale: 0 },
 						}}
 					>
 						<Button

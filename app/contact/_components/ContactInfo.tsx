@@ -1,21 +1,23 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ContactInfo = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<motion.div
-			initial="hidden"
-			whileInView="visible"
+			ref={ref}
+			initial={{ opacity: 0, y: 100 }}
+			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{
 				duration: 1,
 				delay: 0.2,
 				type: "tween",
-			}}
-			variants={{
-				visible: { y: 0, opacity: 1 },
-				hidden: { y: 100, opacity: 0 },
 			}}
 		>
 			<Card className="bg-transparent outline outline-green-400 rounded-xl p-8">

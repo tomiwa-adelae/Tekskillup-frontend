@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaciltiesImages } from "./FacilitiesImages";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const OurFacilities = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
-		<div className="bg-white">
+		<div ref={ref} className="bg-white">
 			<div className="container pt-16">
 				<div className="text-center flex items-center justify-center flex-col lg:flex-row lg:justify-between lg:text-left lg:gap-6">
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ x: "-100vw" }}
+						animate={isInView ? { x: 0 } : {}}
 						transition={{
 							duration: 0.75,
 							delay: 0.5,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { x: 0 },
-							hidden: { x: -100 },
 						}}
 						className="flex-1"
 					>
@@ -30,17 +30,13 @@ const OurFacilities = () => {
 						</h3>
 					</motion.div>
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ opacity: 0, y: 100 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
 						transition={{
 							duration: 0.75,
 							delay: 0.5,
 							type: "spring",
 							stiffness: 120,
-						}}
-						variants={{
-							visible: { y: 0 },
-							hidden: { y: 100 },
 						}}
 						className="flex-1"
 					>

@@ -1,22 +1,23 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const MoreQuestions = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
 	return (
 		<motion.div
-			initial="hidden"
-			whileInView="visible"
+			ref={ref}
+			initial={{ y: 100 }}
+			animate={isInView ? { y: 0 } : {}}
 			transition={{
 				duration: 1,
 				delay: 0.2,
 				type: "spring",
 				stiffness: 120,
-			}}
-			variants={{
-				visible: { y: 0 },
-				hidden: { y: 100 },
 			}}
 			className="bg-green-400 rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8 py-8 px-8"
 		>

@@ -1,23 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import CompaniesCarousel from "./CompaniesCarousel";
+import { useRef } from "react";
 
 const WhereGraduatesWorks = () => {
+	const ref = useRef(null);
+
+	const isInView = useInView(ref);
+
 	return (
 		<div className="bg-white">
-			<div className="container pt-16 ">
+			<div ref={ref} className="container pt-16 ">
 				<div className="text-center flex items-center justify-center flex-col lg:flex-row lg:justify-between lg:text-left lg:gap-6">
 					<motion.div
-						initial="hidden"
-						whileInView="visible"
+						initial={{ x: "-100vw" }}
+						animate={isInView ? { x: 0 } : {}}
 						transition={{
-							duration: 2,
-							delay: 0.1,
-							type: "spring",
-							stiffness: 150,
-						}}
-						variants={{
-							visible: { x: 0 },
-							hidden: { x: -200 },
+							duration: 1.5,
+							delay: 0.2,
+							type: "tween",
 						}}
 						className="flex-1"
 					>
@@ -30,17 +30,12 @@ const WhereGraduatesWorks = () => {
 					</motion.div>
 					<div className="flex-1">
 						<motion.p
-							initial="hidden"
-							whileInView="visible"
+							initial={{ x: "100vw" }}
+							animate={isInView ? { x: 0 } : {}}
 							transition={{
-								duration: 3,
-								delay: 0.1,
-								type: "spring",
-								stiffness: 120,
-							}}
-							variants={{
-								visible: { x: 0 },
-								hidden: { x: 200 },
+								duration: 1.5,
+								delay: 0.3,
+								type: "tween",
 							}}
 							className="text-xs md:text-sm"
 						>
