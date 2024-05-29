@@ -71,13 +71,16 @@ const LoginForm = () => {
 				config
 			);
 			dispatch(setCredentials({ ...res.data }));
-			console.log(res.data);
 			setLoading(false);
 			toast({
 				title: "Login successfully!",
 				description: "You have successfully logged into your account😁",
 			});
-			router.push("/");
+			if (res.data.isAdmin) {
+				router.push("/admindashbord");
+			} else {
+				router.push("/");
+			}
 		} catch (error: any) {
 			setLoading(false);
 			toast({
